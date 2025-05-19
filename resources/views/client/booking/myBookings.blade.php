@@ -63,12 +63,13 @@
                             </ul>
                         </div>
 
-                        @if ($booking->status === 'pending')
+                        @if ($booking->status === 'pending' && $booking->snap_token)
                             <div class="text-right">
-                                <a href="{{ route('payment.upload.form', $booking) }}"
-                                    class="inline-block bg-green-600 hover:bg-green-700 text-white font-bold py-1 px-3 rounded text-sm transition duration-300">
-                                    Unggah Bukti Transfer
-                                </a>
+                                <button 
+                                    class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded text-sm transition duration-300 pay-with-midtrans"
+                                    data-snap-token="{{ $booking->snap_token }}">
+                                    Bayar Online dengan Midtrans
+                                </button>
                             </div>
                         @endif
 
@@ -86,4 +87,19 @@
             </div>
         </div>
     </div>
+    @php
+        $hasPendingWithSnapToken = $bookings->where('status', 'pending')->whereNotNull('snap_token')->count() > 0;
+    @endphp
+    @if($hasPendingWithSnapToken)
+        <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ config('midtrans.client_key') }}"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                document.querySelectorAll('.pay-with-midtrans').forEach(function(btn) {
+                    btn.addEventListener('click', function() {
+                        window.snap.pay(btn.getAttribute('data-snap-token'));
+                    });
+                });
+            });
+        </script>
+    @endif
 </x-app-layout>

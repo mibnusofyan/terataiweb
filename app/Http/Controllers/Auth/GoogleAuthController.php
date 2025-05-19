@@ -53,11 +53,9 @@ class GoogleAuthController extends Controller
 
             return redirect()->intended('/dashboard');
 
-        } catch (\Throwable $th) {
-            Log::error('Google Auth Callback Error: ' . $th->getMessage());
-
-            // Redirect kembali ke halaman login dengan pesan error
-            return redirect('/login')->with('error', 'Terjadi kesalahan saat login dengan Google. Silakan coba lagi.');
+        } catch (\Throwable $e) {
+            Log::error('Google Auth Callback Error: ' . $e->getMessage(), ['trace' => $e->getTraceAsString()]);
+            return redirect('/login')->with('error', 'Login Google gagal: ' . $e->getMessage());
         }
     }
 }

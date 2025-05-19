@@ -39,14 +39,12 @@
                                     </p>
                                     <p class="mb-2"><span class="font-semibold">Tanggal Kunjungan:</span>
                                         {{ $latestBooking->booking_date->format('d M Y') }}</p>
-                                    {{-- Total Harga ditampilkan di sini dan juga di instruksi pembayaran --}}
                                     <p class="mb-2"><span class="font-semibold">Total Harga:</span> <span
                                             class="font-bold text-green-600 dark:text-green-400">Rp
                                             {{ number_format($latestBooking->total_price, 0, ',', '.') }}</span></p>
                                     <p class="mb-4"><span class="font-semibold">Status:</span> <span
                                             class="font-bold capitalize text-orange-600 dark:text-orange-400">{{ $latestBooking->status }}</span>
                                     </p>
-
                                     <h3 class="font-semibold mb-2 border-b border-gray-200 dark:border-gray-600 pb-1">Item
                                         Pesanan:</h3>
                                     <ul class="list-disc list-inside ml-4 space-y-1">
@@ -59,42 +57,22 @@
                                 </div>
                             </div>
                         @endisset
-
-                        <div class="w-full md:w-1/2 bg-gray-100 dark:bg-gray-700 p-6 rounded-lg shadow-md">
-                            <h2
-                                class="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100 border-b border-gray-200 dark:border-gray-600 pb-2">
-                                Langkah Selanjutnya: Pembayaran Manual</h2>
-
-                            <p class="text-gray-700 dark:text-gray-300 mb-4">Mohon lakukan transfer pembayaran sebesar
-                                <strong>Rp {{ number_format($latestBooking->total_price, 0, ',', '.') }}</strong> ke
-                                rekening berikut:
-                            </p>
-
-                            <div class="mb-4 p-4 bg-gray-200 dark:bg-gray-600 rounded-md">
-                                <p class="text-lg font-bold mb-2 text-gray-900 dark:text-gray-100">Bank ABC: <span
-                                        class="text-blue-700 dark:text-blue-400 break-all">1234 5678 9012</span></p>
-                                <p class="text-lg font-bold text-gray-900 dark:text-gray-100">Atas Nama: Nama Pemilik
-                                    Rekening</p>
-                            </div>
-
-                            <p class="text-gray-700 dark:text-gray-300 mb-4">Setelah transfer, mohon konfirmasikan
-                                pembayaran Anda dengan mengunggah bukti transfer melalui link berikut:</p>
-
-                            @isset($latestBooking)
-                                <a href="{{ route('payment.upload.form', $latestBooking) }}"
-                                    class="inline-block bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-300">
-                                    Unggah Bukti Transfer
-                                </a>
-                            @else
-                                <span class="text-red-500 dark:text-red-400 text-sm block mt-2">Detail pesanan terakhir
-                                    tidak tersedia untuk unggah bukti.</span>
-                            @endisset
-
-                            <p class="text-sm text-gray-600 dark:text-gray-400 mt-4">Pesanan akan diproses setelah
-                                pembayaran dikonfirmasi oleh admin.</p>
-                        </div>
-
                     </div>
+                    @if(session('snap_token'))
+                        <div class="my-8 text-center">
+                            <script src="https://app.sandbox.midtrans.com/snap/snap.js"
+                                data-client-key="{{ config('midtrans.client_key') }}"></script>
+                            <button id="pay-button"
+                                class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-300 mb-4">
+                                Bayar Online dengan Midtrans
+                            </button>
+                            <script>
+                                document.getElementById('pay-button').onclick = function () {
+                                    window.snap.pay('{{ session('snap_token') }}');
+                                }
+                            </script>
+                        </div>
+                    @endif
 
                     <div class="mt-8 text-center">
                         <p class="mb-2"><a href="{{ route('my.bookings') }}"

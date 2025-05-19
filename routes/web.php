@@ -4,6 +4,9 @@ use App\Http\Controllers\Auth\GoogleAuthController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\MidtransCallbackController;
+use App\Http\Controllers\MidtransNotificationController;
+use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LandingPageController::class, 'index'])->name('landing-page');
@@ -14,10 +17,15 @@ Route::get('/auth/google/callback', [GoogleAuthController::class, 'callback'])->
 
 
 Route::get('/booking/confirm', [BookingController::class, 'showConfirmation'])->name('booking.confirmation');
+Route::post('/midtrans/notification', [MidtransNotificationController::class, 'handleNotification']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+
+Route::post('/midtrans/callback', [MidtransCallbackController::class, 'handle'])
+    ->withoutMiddleware([VerifyCsrfToken::class]);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

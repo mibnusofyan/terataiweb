@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Midtrans\Config;
+use Midtrans\Snap;
 
 class BookingController extends Controller
 {
@@ -86,7 +88,8 @@ class BookingController extends Controller
             throw new ValidationException($validator);
         }
 
-        DB::transaction(function () use ($user, $validatedData, $totalPrice, $bookingItemsData, $ticketTypes, $selectedQuantities) {
+
+        DB::transaction(function () use ($user, $validatedData, $totalPrice, $bookingItemsData, $ticketTypes, $selectedQuantities, &$booking) {
             $booking = Booking::create([
                 'user_id' => $user->id,
                 'booking_date' => $validatedData['booking_date'],
@@ -99,7 +102,35 @@ class BookingController extends Controller
                 $booking->bookingItems()->create($itemData);
             }
         });
-        return redirect()->route('booking.confirmation')->with('success', 'Pesanan Anda berhasil dibuat! Silakan lakukan pembayaran.');
+
+        // Konfigurasi Midtrans
+        Config::$serverKey = config('midtrans.server_key');
+        Config::$isProduction = config('midtrans.is_production');
+        Config::$isSanitized = true;
+        Config::$is3ds = true;
+
+        // Data transaksi untuk Snap
+        $params = [
+            'transaction_details' => [
+                'order_id' => $booking->id . '-' . time(),
+                'gross_amount' => $booking->total_price,
+            ],
+            'customer_details' => [
+                'first_name' => $user->name,
+                'email' => $user->email,
+            ],
+        ];
+
+        // Generate Snap Token
+        $snapToken = Snap::getSnapToken($params);
+
+        // Simpan snap_token ke booking (opsional, jika ingin)
+        $booking->update(['snap_token' => $snapToken]);
+
+        return redirect()->route('booking.confirmation')->with([
+            'success' => 'Pesanan Anda berhasil dibuat! Silakan lakukan pembayaran.',
+            'snap_token' => $snapToken,
+        ]);
     }
 
     public function showConfirmation(Request $request)

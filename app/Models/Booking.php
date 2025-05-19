@@ -14,6 +14,7 @@ class Booking extends Model
         'user_id',
         'booking_date',
         'total_price',
+        'snap_token',
         'status',
         'payment_proof',
     ];

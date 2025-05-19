@@ -1,10 +1,10 @@
 @extends('layouts.main')
 @section('title', 'Menara Teratai Purwokerto')
 @section('content')
-    <div class="w-full p-8 md:p-12 lg:p-16 mb-8 md:mb-12 bg-gray-900 text-gray-400">
+    <div class="w-full p-2 md:p-4 lg:p-6 mb-8 md:mb-12 bg-gray-900 text-gray-400">
         <div class="container mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12 py-8 md:py-12">
             <div class="col-span-1 lg:col-span-1 animate__animated animate__fadeIn" data-wow-delay="0.1s">
-                <img class="w-full rounded mb-4" src="{{ asset('images/menara/menara1.jpg') }}" alt="Hero Image 2">
+                <img class="w-full rounded-lg mb-4" src="{{ asset('images/menara/menara1.jpg') }}" alt="Hero Image 2">
                 <p class="text-center text-5xl text-gray-400 mb-4">
                     <i class="bi bi-arrow-down animate-bounce"></i>
                 </p>
@@ -17,7 +17,7 @@
             <div class="col-span-1 lg:col-span-1 animate__animated animate__fadeIn" data-wow-delay="0.3s"
                 style="min-height: 500px;">
                 <div class="relative h-full">
-                    <img class="absolute w-full h-full object-cover rounded" src="{{ asset('images/menara/menara7.jpg') }}"
+                    <img class="absolute w-full h-full object-cover rounded-lg" src="{{ asset('images/menara/menara7.jpg') }}"
                         alt="Hero Image 1">
                 </div>
             </div>
@@ -29,7 +29,7 @@
                 <p class="text-center text-5xl text-gray-400 mb-4">
                     <i class="bi bi-arrow-up animate-bounce"></i>
                 </p>
-                <img class="w-full rounded" src="{{ asset('images/menara/menara6.jpeg') }}" alt="Hero Image 3">
+                <img class="w-full rounded-lg" src="{{ asset('images/menara/menara6.jpeg') }}" alt="Hero Image 3">
             </div>
             <div class="col-span-full text-center animate__animated animate__fadeIn" data-wow-delay="0.1s">
                 <h1 class="text-6xl md:text-7xl text-gray-400 text-center mb-0 font-['Emblema_One']">Menara Pandang Teratai
@@ -44,8 +44,8 @@
             <div class="w-full lg:w-5/12 px-4 mb-8 lg:mb-0 animate__animated animate__fadeIn" data-wow-delay="0.1s"
                 style="min-height: 500px;">
                 <div class="relative h-full">
-                    <img class="w-full h-full rounded-tl-full"
-                        src="{{ asset('images/menara/menara11.jpg') }}" alt="About Image">
+                    <img class="w-full h-full rounded-tl-full" src="{{ asset('images/menara/menara11.jpg') }}"
+                        alt="About Image">
                 </div>
             </div>
             <div class="w-full lg:w-7/12 px-4 animate__animated animate__fadeIn" data-wow-delay="0.2s">
@@ -88,66 +88,10 @@
         </div>
     </div>
 
-
-    <div class="w-full bg-gray-900 px-4 py-12 md:py-16 my-8 md:my-12">
-        <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 py-8 md:py-12">
-            <div class="col-span-1 animate__animated animate__fadeIn" data-wow-delay="0.1s">
-                <div class="flex items-center">
-                    <div class="w-20 h-20 flex items-center justify-center mb-3 rounded-full bg-gray-900">
-                        <i class="fa fa-star text-3xl text-blue-600"></i>
-                    </div>
-                    <div class="pl-4">
-                        <h5 class="text-white text-lg font-semibold">Pengalaman</h5>
-                        <h1 class="text-5xl md:text-6xl text-gray-400 mb-0" data-toggle="counter-up">10+</h1>
-                        <p class="text-gray-400">Tahun</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-span-1 animate__animated animate__fadeIn" data-wow-delay="0.2s">
-                <div class="flex items-center">
-                    <div class="w-20 h-20 flex items-center justify-center mb-3 rounded-full bg-gray-900">
-                        <i class="fa fa-users text-3xl text-blue-600"></i>
-                    </div>
-                    <div class="pl-4"> {{-- Mengganti ps-4 --}}
-                        <h5 class="text-white text-lg font-semibold">Pengunjung</h5>
-                        <h1 class="text-5xl md:text-6xl text-gray-400 mb-0" data-toggle="counter-up">100000+</h1>
-                        <p class="text-gray-400">Orang</p>
-                    </div>
-                </div>
-            </div>
-            {{-- Item Fakta 3 --}}
-            <div class="col-span-1 animate__animated animate__fadeIn" data-wow-delay="0.3s">
-                <div class="flex items-center">
-                    <div class="w-20 h-20 flex items-center justify-center mb-3 rounded-full bg-gray-900">
-                        <i class="fa fa-check text-3xl text-blue-600"></i>
-                    </div>
-                    <div class="pl-4">
-                        <h5 class="text-white text-lg font-semibold">Ulasan Positif</h5>
-                        <h1 class="text-5xl md:text-6xl text-gray-400 mb-0" data-toggle="counter-up">99%</h1>
-                        <p class="text-gray-400">Tingkat Kepuasan</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-span-1 animate__animated animate__fadeIn" data-wow-delay="0.4s">
-                <div class="flex items-center">
-                    <div class="w-20 h-20 flex items-center justify-center mb-3 rounded-full bg-gray-900">
-                        <i class="fa fa-mug-hot text-3xl text-blue-600"></i>
-                    </div>
-                    <div class="pl-4">
-                        <h5 class="text-white text-lg font-semibold">Acara</h5>
-                        <h1 class="text-5xl md:text-6xl text-gray-400 mb-0" data-toggle="counter-up">50+</h1>
-                        <p class="text-gray-400">Event Tahunan</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
     <div class="container mx-auto px-4 py-12 relative">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 pb-12">
             <div class="col-span-1 md:col-span-1 animate__animated animate__fadeIn" data-wow-delay="0.1s">
-                <div class="rounded text-center p-8 bg-gray-800 text-white">
+                <div class="rounded-lg text-center p-8 bg-gray-800 text-white">
                     <img class="w-36 h-36 mx-auto object-cover bg-white rounded-full mb-4"
                         src="{{ asset('images/menara/menara9.jpg') }}" alt="Feature Icon">
                     <h3 class="text-2xl font-semibold my-4">Pemandangan 360 Derajat</h3>
@@ -160,7 +104,7 @@
                 </div>
             </div>
             <div class="col-span-1 md:col-span-1 animate__animated animate__fadeIn" data-wow-delay="0.3s">
-                <div class="rounded text-center p-8 bg-gray-800 text-white">
+                <div class="rounded-lg text-center p-8 bg-gray-800 text-white">
                     <img class="w-36 h-36 mx-auto object-cover bg-white rounded-full mb-4"
                         src="{{ asset('images/menara/menara10.jpeg') }}" alt="Feature Icon">
                     <h3 class="text-2xl font-semibold my-4">Fasilitas Lengkap</h3>
@@ -173,7 +117,7 @@
                 </div>
             </div>
             <div class="col-span-1 md:col-span-1 animate__animated animate__fadeIn" data-wow-delay="0.5s">
-                <div class="rounded text-center p-8 bg-gray-800 text-white">
+                <div class="rounded-lg text-center p-8 bg-gray-800 text-white">
                     <img class="w-36 h-36 mx-auto object-cover bg-white rounded-full mb-4"
                         src="{{ asset('images/menara/menara11.jpg') }}" alt="Feature Icon">
                     <h3 class="text-2xl font-semibold my-4">Lokasi Strategis</h3>
@@ -185,19 +129,11 @@
                         href="#">Baca Selengkapnya <i class="bi bi-arrow-right"></i></a>
                 </div>
             </div>
-            <div class="col-span-full text-center py-8 animate__animated animate__fadeIn" data-wow-delay="0.1s">
-                <h1 class="text-4xl md:text-5xl text-gray-400 mb-4 font-['Emblema_One']">
-                    <span class="text-blue-600">Diskon 30%</span><br> Untuk Musim Ini
-                </h1>
-                <a href="{{ route('booking.form') }}"
-                    class="inline-block bg-blue-600 text-white text-xl py-3 px-8 rounded hover:bg-blue-700 transition duration-300">Pesan
-                    Sekarang</a>
-            </div>
         </div>
     </div>
 
 
-    <div class="w-full py-12 px-0 relative">
+    <div class="w-full pt-12 px-0 relative">
         <div class="mb-8 text-center max-w-xl mx-auto animate__animated animate__fadeIn" data-wow-delay="0.1s">
             <h5 class="text-blue-600 text-lg font-semibold mb-2">Galeri Foto</h5>
             <h1 class="text-4xl md:text-5xl font-bold mb-0">Jelajahi Keindahan Menara Teratai</h1>
@@ -333,211 +269,241 @@
             </div>
         </div>
     </div>
-    <div class="container mx-auto px-4 py-12">
+
+
+    <div class="container mx-auto px-4 py-24 bg-gray-900">
+        {{-- Bagian Judul dan Subjudul --}}
         <div class="mb-8 text-center max-w-xl mx-auto animate__animated animate__fadeIn" data-wow-delay="0.1s">
             <h5 class="text-blue-600 text-lg font-semibold mb-2">Tim Kami</h5>
-            <h1 class="text-4xl md:text-5xl font-bold mb-0">Kenalan Dengan Petugas Menara</h1>
+            <h1 class="text-4xl text-gray-200 md:text-5xl font-bold mb-0">Kenalan Dengan Tim Pengembang Aplikasi</h1>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
+
+        {{-- Bagian Grid Anggota Tim --}}
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+
+            {{-- Item Anggota Tim 1 --}}
             <div class="col-span-1 animate__animated animate__fadeIn" data-wow-delay="0.1s">
                 <div class="relative">
-                    <div class="relative overflow-hidden rounded-full rounded-b rounded-r">
-                        <img class="w-full object-cover" src="{{ asset('images/team-1.jpg') }}" alt="Team Member">
+                    {{-- TAMBAH: h-72 (contoh tinggi) pada div gambar --}}
+                    <div class="relative overflow-hidden rounded-lg h-72">
+                        {{-- TAMBAH: h-full pada tag img --}}
+                        <img class="w-full h-full object-cover" src="{{ asset('images/tim/ibnu.png') }}"
+                            alt="Team Member: Muhammad Ibnu Sofyan"> {{-- Tambah alt text deskriptif --}}
+                        {{-- Overlay dengan Icon Sosial Media --}}
                         <div
-                            class="absolute inset-0 flex items-center justify-start p-4 bg-gray-900 bg-opacity-75 opacity-0 hover:opacity-100 transition-opacity duration-300">
-
+                            class="absolute inset-0 flex items-center justify-center p-4 bg-gray-900 bg-opacity-75 opacity-0 hover:opacity-100 transition-opacity duration-300">
                             <a class="w-9 h-9 flex items-center justify-center bg-white text-gray-800 hover:text-blue-600 rounded-full mx-1"
-                                href="#"><i class="fab fa-twitter"></i></a>
+                                href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                             <a class="w-9 h-9 flex items-center justify-center bg-white text-gray-800 hover:text-blue-600 rounded-full mx-1"
-                                href="#"><i class="fab fa-facebook-f"></i></a>
+                                href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                             <a class="w-9 h-9 flex items-center justify-center bg-white text-gray-800 hover:text-blue-600 rounded-full mx-1"
-                                href="#"><i class="fab fa-linkedin-in"></i></a>
+                                href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
+                    {{-- Informasi Nama dan Jabatan --}}
                     <div
-                        class="absolute bottom-0 start-0 w-full h-24 flex flex-col items-center justify-center rounded-b text-center bg-gray-900 bg-opacity-90">
-
-                        <h5 class="text-white text-lg font-semibold mb-1">Nama Petugas</h5>
-                        <p class="text-xs uppercase text-gray-400 tracking-wider">Jabatan</p>
+                        class="absolute bottom-0 start-0 w-full h-24 flex flex-col items-center justify-center rounded-b-lg text-center bg-gray-900 bg-opacity-90">
+                        <h5 class="text-white text-lg font-semibold mb-1">Muhammad Ibnu Sofyan</h5>
+                        <p class="text-xs uppercase text-gray-400 tracking-wider">Frontend Developer</p>
                     </div>
                 </div>
             </div>
+
             {{-- Item Anggota Tim 2 --}}
             <div class="col-span-1 animate__animated animate__fadeIn" data-wow-delay="0.3s">
                 <div class="relative">
-                    <div class="relative overflow-hidden rounded-full rounded-b rounded-r">
-                        <img class="w-full object-cover" src="{{ asset('images/team-2.jpg') }}" alt="Team Member">
+                    {{-- TAMBAH: h-72 (contoh tinggi) pada div gambar --}}
+                    <div class="relative overflow-hidden rounded-lg h-72">
+                        {{-- TAMBAH: h-full pada tag img --}}
+                        <img class="w-full h-full object-cover" src="{{ asset('images/tim/jaizz.jpeg') }}"
+                            alt="Team Member: Jaiz Cahya Prasetya">
                         <div
-                            class="absolute inset-0 flex items-center justify-start p-4 bg-gray-900 bg-opacity-75 opacity-0 hover:opacity-100 transition-opacity duration-300">
+                            class="absolute inset-0 flex items-center justify-center p-4 bg-gray-900 bg-opacity-75 opacity-0 hover:opacity-100 transition-opacity duration-300">
                             <a class="w-9 h-9 flex items-center justify-center bg-white text-gray-800 hover:text-blue-600 rounded-full mx-1"
-                                href="#"><i class="fab fa-twitter"></i></a>
+                                href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                             <a class="w-9 h-9 flex items-center justify-center bg-white text-gray-800 hover:text-blue-600 rounded-full mx-1"
-                                href="#"><i class="fab fa-facebook-f"></i></a>
+                                href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                             <a class="w-9 h-9 flex items-center justify-center bg-white text-gray-800 hover:text-blue-600 rounded-full mx-1"
-                                href="#"><i class="fab fa-linkedin-in"></i></a>
+                                href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
                     <div
-                        class="absolute bottom-0 start-0 w-full h-24 flex flex-col items-center justify-center rounded-b text-center bg-gray-900 bg-opacity-90">
-                        <h5 class="text-white text-lg font-semibold mb-1">Nama Petugas</h5>
-                        <p class="text-xs uppercase text-gray-400 tracking-wider">Jabatan</p>
+                        class="absolute bottom-0 start-0 w-full h-24 flex flex-col items-center justify-center rounded-b-lg text-center bg-gray-900 bg-opacity-90">
+                        <h5 class="text-white text-lg font-semibold mb-1">Jaiz Cahya Prasetya</h5>
+                        <p class="text-xs uppercase text-gray-400 tracking-wider">Backend Developer</p>
                     </div>
                 </div>
             </div>
+
             {{-- Item Anggota Tim 3 --}}
             <div class="col-span-1 animate__animated animate__fadeIn" data-wow-delay="0.5s">
                 <div class="relative">
-                    <div class="relative overflow-hidden rounded-full rounded-b rounded-r">
-                        <img class="w-full object-cover" src="{{ asset('images/team-3.jpg') }}" alt="Team Member">
+                    {{-- TAMBAH: h-72 (contoh tinggi) pada div gambar --}}
+                    <div class="relative overflow-hidden rounded-lg h-72">
+                        {{-- TAMBAH: h-full pada tag img --}}
+                        <img class="w-full h-full object-cover" src="{{ asset('images/tim/farrel.jpg') }}"
+                            alt="Team Member: Meiwildan Muhammad Farrel">
                         <div
-                            class="absolute inset-0 flex items-center justify-start p-4 bg-gray-900 bg-opacity-75 opacity-0 hover:opacity-100 transition-opacity duration-300">
+                            class="absolute inset-0 flex items-center justify-center p-4 bg-gray-900 bg-opacity-75 opacity-0 hover:opacity-100 transition-opacity duration-300">
                             <a class="w-9 h-9 flex items-center justify-center bg-white text-gray-800 hover:text-blue-600 rounded-full mx-1"
-                                href="#"><i class="fab fa-twitter"></i></a>
+                                href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                             <a class="w-9 h-9 flex items-center justify-center bg-white text-gray-800 hover:text-blue-600 rounded-full mx-1"
-                                href="#"><i class="fab fa-facebook-f"></i></a>
+                                href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                             <a class="w-9 h-9 flex items-center justify-center bg-white text-gray-800 hover:text-blue-600 rounded-full mx-1"
-                                href="#"><i class="fab fa-linkedin-in"></i></a>
+                                href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
                     <div
-                        class="absolute bottom-0 start-0 w-full h-24 flex flex-col items-center justify-center rounded-b text-center bg-gray-900 bg-opacity-90">
-                        <h5 class="text-white text-lg font-semibold mb-1">Nama Petugas</h5>
-                        <p class="text-xs uppercase text-gray-400 tracking-wider">Jabatan</p>
+                        class="absolute bottom-0 start-0 w-full h-24 flex flex-col items-center justify-center rounded-b-lg text-center bg-gray-900 bg-opacity-90">
+                        <h5 class="text-white text-lg font-semibold mb-1">Meiwildan Muhammad Farrel</h5>
+                        <p class="text-xs uppercase text-gray-400 tracking-wider">Designer UI UX & Server</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="w-full p-0 my-8 md:my-12">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-0">
-            <div class="col-span-1 lg:col-span-1 animate__animated animate__fadeIn" data-wow-delay="0.1s"
-                style="min-height: 500px;">
-                <div class="h-full relative overflow-hidden rounded-tl-full">
-                    <img class="absolute w-full h-full object-cover" src="{{ asset('images/testimonial.jpg') }}"
-                        alt="Testimonial Background">
-                </div>
-            </div>
-            <div class="col-span-1 lg:col-span-1 bg-gray-900 p-8 md:p-12 overflow-hidden animate__animated animate__fadeIn"
-                data-wow-delay="0.3s" style="border-bottom-right-radius: 50%;">
-                <div class="mb-8">
-                    <h5 class="text-blue-600 text-lg font-semibold mb-2">Testimoni</h5>
-                    <h1 class="text-4xl md:text-5xl text-gray-400 mb-0 font-['Emblema_One']">Kata Pengunjung Kami</h1>
-                </div>
-                <div class="owl-carousel testimonial-carousel">
-                    <div class="testimonial-item">
-                        <p class="text-xl md:text-2xl font-normal text-gray-300 mb-4">
-                            <i class="fa fa-quote-left text-blue-600 mr-3"></i>
-                            Dolores sed duo clita tempor justo dolor et stet lorem kasd labore dolore lorem ipsum. At
-                            lorem lorem magna ut et, nonumy et labore et tempor diam tempor erat dolor rebum sit ipsum.
-                        </p>
-                        <div class="flex items-center">
-                            <img class="w-16 h-16 object-cover rounded-full" src="{{ asset('images/testimonial-1.jpg') }}"
-                                alt="Client Photo">
-                            <div class="pl-4">
-                                <h5 class="text-gray-400 text-lg font-semibold">Nama Klien</h5>
-                                <span class="text-xs uppercase text-gray-400 tracking-wider">Profesi</span>
-                            </div>
+
+            {{-- Item Anggota Tim 4 --}}
+            <div class="col-span-1 animate__animated animate__fadeIn" data-wow-delay="0.7s">
+                <div class="relative">
+                    {{-- TAMBAH: h-72 (contoh tinggi) pada div gambar --}}
+                    <div class="relative overflow-hidden rounded-lg h-72">
+                        {{-- TAMBAH: h-full pada tag img --}}
+                        <img class="w-full h-full object-cover" src="{{ asset('images/tim/dedy.jpeg') }}"
+                            alt="Team Member: Dedy Tigor Manurung">
+                        <div
+                            class="absolute inset-0 flex items-center justify-center p-4 bg-gray-900 bg-opacity-75 opacity-0 hover:opacity-100 transition-opacity duration-300">
+                            <a class="w-9 h-9 flex items-center justify-center bg-white text-gray-800 hover:text-blue-600 rounded-full mx-1"
+                                href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a class="w-9 h-9 flex items-center justify-center bg-white text-gray-800 hover:text-blue-600 rounded-full mx-1"
+                                href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a class="w-9 h-9 flex items-center justify-center bg-white text-gray-800 hover:text-blue-600 rounded-full mx-1"
+                                href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
-                    <div class="testimonial-item">
-                        <p class="text-xl md:text-2xl font-normal text-gray-300 mb-4">
-                            <i class="fa fa-quote-left text-blue-600 mr-3"></i>
-                            Dolores sed duo clita tempor justo dolor et stet lorem kasd labore dolore lorem ipsum. At
-                            lorem lorem magna ut et, nonumy et labore et tempor diam tempor erat dolor rebum sit ipsum.
-                        </p>
-                        <div class="flex items-center">
-                            <img class="w-16 h-16 object-cover rounded-full" src="{{ asset('images/testimonial-2.jpg') }}"
-                                alt="Client Photo">
-                            <div class="pl-4">
-                                <h5 class="text-gray-400 text-lg font-semibold">Nama Klien</h5>
-                                <span class="text-xs uppercase text-gray-400 tracking-wider">Profesi</span>
-                            </div>
-                        </div>
+                    <div
+                        class="absolute bottom-0 start-0 w-full h-24 flex flex-col items-center justify-center rounded-b-lg text-center bg-gray-900 bg-opacity-90">
+                        <h5 class="text-white text-lg font-semibold mb-1">Dedy Tigor Manurung</h5>
+                        <p class="text-xs uppercase text-gray-400 tracking-wider">Database & Testing</p>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 
-
-    <div class="container mx-auto px-4 py-12">
+    {{-- UBAH: py-12 menjadi py-8 md:py-10 --}}
+    {{-- UBAH: my-8 md:my-12 menjadi my-6 md:my-8 --}}
+    <div class="container mx-auto px-4 py-8 md:py-10 my-6 md:my-8">
+        {{-- Bagian Judul dan Subjudul --}}
         <div class="mb-8 text-center max-w-xl mx-auto animate__animated animate__fadeIn" data-wow-delay="0.1s">
             <h5 class="text-blue-600 text-lg font-semibold mb-2">Artikel Terbaru</h5>
             <h1 class="text-4xl md:text-5xl font-bold mb-0">Artikel Terbaru Tentang Menara Teratai</h1>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
+
+        {{-- Bagian Grid Artikel --}}
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12"> {{-- Grid ini sudah oke untuk 3 artikel
+            --}}
+
+            {{-- Item Artikel 1 --}}
             <div class="col-span-1 animate__animated animate__fadeIn" data-wow-delay="0.1s">
-                <div class="bg-gray-900 rounded-b">
-                    <div class="relative overflow-hidden rounded-t">
-                        <img class="w-full object-cover" src="{{ asset('images/artikel/capster.png') }}" alt="Blog Image">
+                <div class="bg-gray-900 rounded-lg overflow-hidden shadow-lg"> {{-- Tambah shadow & overflow hidden di
+                    sini --}}
+                    {{-- TAMBAH: h-56 (contoh tinggi) pada div gambar --}}
+                    <div class="relative overflow-hidden rounded-t-lg h-56"> {{-- Tambah rounded-t-lg dan tinggi tetap --}}
+                        {{-- TAMBAH: h-full pada tag img --}}
+                        <img class="absolute w-full h-full object-cover" src="{{ asset('images/artikel/capster.png') }}"
+                            alt="Artikel Image">
                     </div>
-                    <div class="flex items-center rounded-b p-4">
+                    <div class="flex items-center rounded-b-lg p-4"> {{-- Pastikan rounded-b-lg --}}
                         <div class="flex-shrink-0 text-center text-gray-400 border-r border-gray-600 pr-3 mr-3">
                             <span>01</span>
                             <h6 class="text-blue-600 uppercase mb-0 text-sm font-semibold">Januari</h6>
                             <span>2045</span>
                         </div>
-                        <a class="text-lg font-semibold leading-tight text-white hover:text-blue-600" href="#">Capster Talent Day 2025</a>
+                        <a class="text-lg font-semibold leading-tight text-white hover:text-blue-600" href="#">
+                            Capster Talent Day 2025
+                        </a>
                     </div>
                 </div>
             </div>
+
+            {{-- Item Artikel 2 --}}
             <div class="col-span-1 animate__animated animate__fadeIn" data-wow-delay="0.3s">
-                <div class="bg-gray-900 rounded-b">
-                    <div class="relative overflow-hidden rounded-t">
-                        <img class="w-full object-cover" src="{{ asset('images/artikel/eternallove.png') }}" alt="Blog Image">
+                <div class="bg-gray-900 rounded-lg overflow-hidden shadow-lg">
+                    {{-- TAMBAH: h-56 (contoh tinggi) pada div gambar --}}
+                    <div class="relative overflow-hidden rounded-t-lg h-56">
+                        {{-- TAMBAH: h-full pada tag img --}}
+                        <img class="absolute w-full h-full object-cover" src="{{ asset('images/artikel/eternallove.png') }}"
+                            alt="Artikel Image">
                     </div>
-                    <div class="flex items-center rounded-b p-4">
+                    <div class="flex items-center rounded-b-lg p-4">
                         <div class="flex-shrink-0 text-center text-gray-400 border-r border-gray-600 pr-3 mr-3">
                             <span>01</span>
                             <h6 class="text-blue-600 uppercase mb-0 text-sm font-semibold">Januari</h6>
                             <span>2045</span>
                         </div>
-                        <a class="text-lg font-semibold leading-tight text-white hover:text-blue-600" href="#">Purwokerto Wedding Festival</a>
+                        <a class="text-lg font-semibold leading-tight text-white hover:text-blue-600" href="#">
+                            Purwokerto Wedding Festival
+                        </a>
                     </div>
                 </div>
             </div>
+
+            {{-- Item Artikel 3 --}}
             <div class="col-span-1 animate__animated animate__fadeIn" data-wow-delay="0.5s">
-                <div class="bg-gray-900 rounded-b">
-                    <div class="relative overflow-hidden rounded-t">
-                        <img class="w-full object-cover" src="{{ asset('images/artikel/kapalapi.png') }}" alt="Blog Image">
+                <div class="bg-gray-900 rounded-lg overflow-hidden shadow-lg">
+                    {{-- TAMBAH: h-56 (contoh tinggi) pada div gambar --}}
+                    <div class="relative overflow-hidden rounded-t-lg h-56">
+                        {{-- TAMBAH: h-full pada tag img --}}
+                        <img class="absolute w-full h-full object-cover" src="{{ asset('images/artikel/kapalapi.png') }}"
+                            alt="Artikel Image">
                     </div>
-                    <div class="flex items-center rounded-b p-4">
+                    <div class="flex items-center rounded-b-lg p-4">
                         <div class="flex-shrink-0 text-center text-gray-400 border-r border-gray-600 pr-3 mr-3">
                             <span>01</span>
                             <h6 class="text-blue-600 uppercase mb-0 text-sm font-semibold">Januari</h6>
                             <span>2045</span>
                         </div>
-                        <a class="text-lg font-semibold leading-tight text-white hover:text-blue-600" href="#">Gerak Semangat bersama Kapal Api</a>
+                        <a class="text-lg font-semibold leading-tight text-white hover:text-blue-600" href="#">
+                            Gerak Semangat bersama Kapal Api
+                        </a>
                     </div>
                 </div>
             </div>
+            {{-- Jika ada lebih dari 3 artikel, grid akan otomatis menyesuaikan (1, 2, atau 3 kolom) --}}
+
         </div>
     </div>
 
+    <x-main.testimonial />
 
-    <div class="w-full relative overflow-hidden mt-8 md:mt-12">
+    <div class="w-full relative overflow-hidden">
         <a href="#" class="absolute inset-0 flex items-center justify-center bg-white rounded-full z-10"
             style="width: 100px; height: 100px; margin: auto;">
             <i class="fab fa-instagram text-4xl text-gray-700 hover:text-blue-600"></i>
         </a>
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-0">
             <div class="col-span-1 animate__animated animate__fadeIn" data-wow-delay="0.1s">
-                <img class="w-full h-full object-cover" src="{{ asset('images/menara/menara1.jpg') }}" alt="Instagram Image">
+                <img class="w-full h-full object-cover" src="{{ asset('images/menara/menara1.jpg') }}"
+                    alt="Instagram Image">
             </div>
             <div class="col-span-1 animate__animated animate__fadeIn" data-wow-delay="0.2s">
                 <img class="w-full h-full object-cover" src="{{ asset('images/menara/menara.jpg') }}" alt="Instagram Image">
             </div>
             <div class="col-span-1 animate__animated animate__fadeIn" data-wow-delay="0.3s">
-                <img class="w-full h-full object-cover" src="{{ asset('images/menara/menara6.jpeg') }}" alt="Instagram Image">
+                <img class="w-full h-full object-cover" src="{{ asset('images/menara/menara6.jpeg') }}"
+                    alt="Instagram Image">
             </div>
             <div class="col-span-1 animate__animated animate__fadeIn" data-wow-delay="0.4s">
-                <img class="w-full h-full object-cover" src="{{ asset('images/jembatan/jembatan.jpg') }}" alt="Instagram Image">
+                <img class="w-full h-full object-cover" src="{{ asset('images/jembatan/jembatan.jpg') }}"
+                    alt="Instagram Image">
             </div>
             <div class="col-span-1 animate__animated animate__fadeIn" data-wow-delay="0.5s">
-                <img class="w-full h-full object-cover" src="{{ asset('images/jembatan/jembatan2.jpg') }}" alt="Instagram Image">
+                <img class="w-full h-full object-cover" src="{{ asset('images/jembatan/jembatan2.jpg') }}"
+                    alt="Instagram Image">
             </div>
             <div class="col-span-1 animate__animated animate__fadeIn" data-wow-delay="0.6s">
-                <img class="w-full h-full object-cover" src="{{ asset('images/jembatan/jembatan4.jpg') }}" alt="Instagram Image">
+                <img class="w-full h-full object-cover" src="{{ asset('images/jembatan/jembatan4.jpg') }}"
+                    alt="Instagram Image">
             </div>
         </div>
     </div>
