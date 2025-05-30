@@ -130,11 +130,17 @@ class BookingResource extends Resource
                         $record->update(['status' => 'paid']);
                         // Kirim notifikasi ke user, dll.
                     }),
-                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\DeleteAction::make()
+                    ->modalHeading('Hapus Booking')
+                    ->modalSubheading('Apakah Anda yakin ingin menghapus data ini? Tindakan ini tidak dapat diurungkan.')
+                    ->modalButton('Ya, Hapus'),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                    Tables\Actions\DeleteBulkAction::make()
+                        ->modalHeading('Hapus Booking Terpilih')
+                        ->modalSubheading('Apakah Anda yakin ingin menghapus semua data yang dipilih? Tindakan ini tidak dapat diurungkan.')
+                        ->modalButton('Ya, Hapus Semua'),
                 ]),
             ]);
     }

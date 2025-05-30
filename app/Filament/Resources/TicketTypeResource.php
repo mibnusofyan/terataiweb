@@ -57,15 +57,20 @@ class TicketTypeResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                // Definisikan filter jika perlu (misal: filter berdasarkan ketersediaan)
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\DeleteAction::make()
+                    ->modalHeading('Hapus Jenis Tiket')
+                    ->modalSubheading('Apakah Anda yakin ingin menghapus jenis tiket ini? Tindakan ini tidak dapat diurungkan.')
+                    ->modalButton('Ya, Hapus'),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                    Tables\Actions\DeleteBulkAction::make()
+                        ->modalHeading('Hapus Jenis Tiket Terpilih')
+                        ->modalSubheading('Apakah Anda yakin ingin menghapus semua jenis tiket yang dipilih? Tindakan ini tidak dapat diurungkan.')
+                        ->modalButton('Ya, Hapus Semua'),
                 ]),
             ]);
     }

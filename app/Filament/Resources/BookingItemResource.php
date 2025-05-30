@@ -94,11 +94,17 @@ class BookingItemResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\DeleteAction::make()
+                    ->modalHeading('Hapus Item Booking')
+                    ->modalSubheading('Apakah Anda yakin ingin menghapus item ini? Tindakan ini tidak dapat diurungkan.')
+                    ->modalButton('Ya, Hapus'),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                    Tables\Actions\DeleteBulkAction::make()
+                        ->modalHeading('Hapus Item Booking Terpilih')
+                        ->modalSubheading('Apakah Anda yakin ingin menghapus semua item yang dipilih? Tindakan ini tidak dapat diurungkan.')
+                        ->modalButton('Ya, Hapus Semua'),
                 ]),
             ]);
     }

@@ -11,12 +11,9 @@
             {{-- Item Anggota Tim 1 --}}
             <div class="col-span-1 animate__animated animate__fadeIn" data-wow-delay="0.1s">
                 <div class="relative">
-                    {{-- TAMBAH: h-72 (contoh tinggi) pada div gambar --}}
                     <div class="relative overflow-hidden rounded-lg h-72">
-                        {{-- TAMBAH: h-full pada tag img --}}
                         <img class="w-full h-full object-cover" src="{{ asset('images/tim/ibnu.png') }}"
-                            alt="Team Member: Muhammad Ibnu Sofyan"> {{-- Tambah alt text deskriptif --}}
-                        {{-- Overlay dengan Icon Sosial Media --}}
+                            alt="Team Member: Muhammad Ibnu Sofyan">
                         <div
                             class="absolute inset-0 flex items-center justify-center p-4 bg-gray-900 bg-opacity-75 opacity-0 hover:opacity-100 transition-opacity duration-300">
                             <a class="w-9 h-9 flex items-center justify-center bg-white text-gray-800 hover:text-blue-600 rounded-full mx-1"
@@ -27,7 +24,6 @@
                                 href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
-                    {{-- Informasi Nama dan Jabatan --}}
                     <div
                         class="absolute bottom-0 start-0 w-full h-24 flex flex-col items-center justify-center rounded-b-lg text-center bg-gray-900 bg-opacity-90">
                         <h5 class="text-white text-lg font-semibold mb-1">Muhammad Ibnu Sofyan</h5>
@@ -39,9 +35,7 @@
             {{-- Item Anggota Tim 2 --}}
             <div class="col-span-1 animate__animated animate__fadeIn" data-wow-delay="0.3s">
                 <div class="relative">
-                    {{-- TAMBAH: h-72 (contoh tinggi) pada div gambar --}}
                     <div class="relative overflow-hidden rounded-lg h-72">
-                        {{-- TAMBAH: h-full pada tag img --}}
                         <img class="w-full h-full object-cover" src="{{ asset('images/tim/jaizz.jpeg') }}"
                             alt="Team Member: Jaiz Cahya Prasetya">
                         <div
@@ -65,9 +59,7 @@
             {{-- Item Anggota Tim 3 --}}
             <div class="col-span-1 animate__animated animate__fadeIn" data-wow-delay="0.5s">
                 <div class="relative">
-                    {{-- TAMBAH: h-72 (contoh tinggi) pada div gambar --}}
                     <div class="relative overflow-hidden rounded-lg h-72">
-                        {{-- TAMBAH: h-full pada tag img --}}
                         <img class="w-full h-full object-cover" src="{{ asset('images/tim/farrel.jpg') }}"
                             alt="Team Member: Meiwildan Muhammad Farrel">
                         <div
@@ -91,9 +83,7 @@
             {{-- Item Anggota Tim 4 --}}
             <div class="col-span-1 animate__animated animate__fadeIn" data-wow-delay="0.7s">
                 <div class="relative">
-                    {{-- TAMBAH: h-72 (contoh tinggi) pada div gambar --}}
                     <div class="relative overflow-hidden rounded-lg h-72">
-                        {{-- TAMBAH: h-full pada tag img --}}
                         <img class="w-full h-full object-cover" src="{{ asset('images/tim/dedy.jpeg') }}"
                             alt="Team Member: Dedy Tigor Manurung">
                         <div
