@@ -1,123 +1,117 @@
-<div class="w-full bg-gray-900">
-    <div class="container mx-auto flex flex-wrap items-center justify-between lg:flex-nowrap px-4 lg:px-0 py-3">
-        {{-- Logo and Brand for Desktop --}}
-        <div class="lg:w-1/4 bg-blue-600 hidden lg:flex items-center justify-center p-0" style="height: 100px;">
-            <img src="{{ asset('images/logo/logo-menara.png') }}" alt="logo Menara Teratai"
-                class="w-auto h-16 lg:h-20 ml-4 object-contain">
-            <a href="{{ url('/') }}" class="block w-full h-full flex items-center justify-center text-center">
-                <h1 class="m-0 text-3xl lg:text-2xl text-white uppercase font-['Emblema_One']">PURWOKERTO</h1>
-            </a>
-        </div>
-
-        {{-- Main Content Area --}}
-        <div class="w-full lg:w-3/4 flex flex-col">
-            <div class="hidden lg:flex justify-end items-center bg-gray-950 px-5 py-2">
-                <div class="flex items-center mr-6">
-                    <i class="fa fa-envelope text-blue-600 mr-2"></i>
-                    <p class="mb-0 text-gray-400 text-sm">info@menarateratai.com</p>
-                </div>
-                <div class="flex items-center">
-                    <i class="fa fa-phone-alt text-blue-600 mr-2"></i>
-                    <p class="mb-0 text-gray-400 text-sm">+62 xxx xxxx xxxx</p>
-                </div>
-                <div class="flex items-center ml-4">
-                    <a class="w-8 h-8 flex items-center justify-center border border-gray-700 text-gray-400 hover:text-blue-500 hover:border-blue-500 rounded-full ml-2 transition-colors duration-300"
-                        href="#"><i class="fab fa-facebook-f text-xs"></i></a>
-                    <a class="w-8 h-8 flex items-center justify-center border border-gray-700 text-gray-400 hover:text-blue-500 hover:border-blue-500 rounded-full ml-2 transition-colors duration-300"
-                        href="#"><i class="fab fa-twitter text-xs"></i></a>
-                    <a class="w-8 h-8 flex items-center justify-center border border-gray-700 text-gray-400 hover:text-blue-500 hover:border-blue-500 rounded-full ml-2 transition-colors duration-300"
-                        href="#"><i class="fab fa-linkedin-in text-xs"></i></a>
-                </div>
+<header class="bg-white dark:bg-gray-900 shadow-md sticky top-0 z-40 transition-all duration-300 ease-in-out" id="navbar">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <nav x-data="{ mobileMenuOpen: false }" class="flex items-center justify-between h-16">
+            <div class="flex items-center">
+                <a href="{{ route('landing-page') }}" class="flex items-center space-x-2 text-2xl font-bold text-gray-800 dark:text-white">
+                    <img src="{{ asset('images/logo-teratai-putih.png') }}" alt="Menara Teratai Logo" class="h-10">
+                    <span>Menara Teratai</span>
+                </a>
             </div>
 
-            <nav x-data="{ open: false }" class="w-full p-4 lg:p-0 lg:px-5" style="background: #111111;">
-                <div class="flex items-center justify-between">
-                    <a href="{{ url('/') }}"
-                        class="block lg:hidden text-blue-600 text-sm uppercase font-['Emblema_One']">
-                        Menara Pandang Teratai
-                    </a>
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="{{ route('landing-page') }}#home" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition duration-300">Home</a>
+                <a href="{{ route('landing-page') }}#about" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition duration-300">Tentang</a>
+                <a href="{{ route('landing-page') }}#ticket" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition duration-300">Tiket</a>
+                <a href="{{ route('landing-page') }}#gallery" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition duration-300">Galeri</a>
+                <a href="{{ route('landing-page') }}#contact" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition duration-300">Kontak</a>
 
-                    <button @click="open = !open" class="lg:hidden text-gray-300 hover:text-white p-2 rounded">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path x-show="!open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 6h16M4 12h16m-7 6h7"></path>
-                            <path x-show="open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M6 18L18 6M6 6l12 12"></path>
-                        </svg>
-                    </button>
-                </div>
+                @auth
+                    <a href="{{ route('booking.form') }}" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition duration-300">Book Now</a>
+                    <a href="{{ route('my.bookings') }}" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition duration-300">My Bookings</a>
+                    {{-- "Riwayat Pemesanan" sama dengan "My Bookings", jadi cukup satu --}}
 
-                {{-- Mobile Menu --}}
-                <div x-show="open" class="lg:hidden mt-2" x-transition:enter="transition ease-out duration-200"
-                    x-transition:enter-start="opacity-0 transform scale-90"
-                    x-transition:enter-end="opacity-100 transform scale-100"
-                    x-transition:leave="transition ease-in duration-100"
-                    x-transition:leave-start="opacity-100 transform scale-100"
-                    x-transition:leave-end="opacity-0 transform scale-90">
-
-                    <div class="flex flex-col py-2">
-                        <a href="{{ url('/') }}"
-                            class="block py-2 px-3 text-white hover:text-blue-600 transition-colors duration-300">Home</a>
-                        <a href="{{ url('/about') }}"
-                            class="block py-2 px-3 text-gray-300 hover:text-blue-600 transition-colors duration-300">Tentang
-                            Kami</a>
-                        <a href="{{ route('booking.form') }}"
-                            class="block py-2 px-3 text-gray-300 hover:text-blue-600 transition-colors duration-300">Tiket</a>
-                    </div>
-
-                    {{-- Auth Links --}}
-                    <div class="flex flex-col items-start py-2 w-full border-t border-gray-700 mt-2 pt-2">
-                        @auth
-                            <a href="{{ url('/dashboard') }}"
-                                class="block py-2 px-3 text-gray-300 hover:text-blue-600 transition-colors duration-300 w-full text-left">Dashboard</a>
-                            <form method="POST" action="{{ route('logout') }}" class="w-full">
-                                @csrf
-                                <button type="submit"
-                                    class="block py-2 px-3 text-gray-300 hover:text-blue-600 transition-colors duration-300 w-full text-left">Logout</button>
-                            </form>
-                        @else
-                            <a href="{{ route('login') }}"
-                                class="block py-2 px-3 text-gray-300 hover:text-blue-600 transition-colors duration-300 w-full text-left">Login</a>
-                            @if (Route::has('register'))
-                                <a href="{{ route('register') }}"
-                                    class="block py-2 px-3 text-gray-300 hover:text-blue-600 transition-colors duration-300 w-full text-left">Register</a>
-                            @endif
-                        @endauth
-                    </div>
-                </div>
-
-                {{-- Desktop Menu --}}
-                <div class="hidden lg:flex lg:items-center lg:justify-between">
-                    <div class="flex lg:mr-auto">
-                        <a href="{{ url('/') }}"
-                            class="py-4 px-4 text-white hover:text-blue-600 transition-colors duration-300">Home</a>
-                        <a href="{{ url('/about') }}"
-                            class="py-4 px-4 text-gray-300 hover:text-blue-600 transition-colors duration-300">Tentang
-                            Kami</a>
-                        <a href="{{ route('booking.form') }}"
-                            class="py-4 px-4 text-gray-300 hover:text-blue-600 transition-colors duration-300">Tiket</a>
-                    </div>
-
-                    <div class="flex">
-                        @auth
-                            <a href="{{ url('/dashboard') }}"
-                                class="py-4 px-4 text-gray-300 hover:text-blue-600 transition-colors duration-300">Dashboard</a>
+                    <div x-data="{ open: false }" class="relative">
+                        <button @click="open = !open" class="flex items-center text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 focus:outline-none">
+                            {{ Auth::user()->name }}
+                            <svg class="ml-1 h-5 w-5 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                        <div x-show="open" @click.away="open = false" x-transition class="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg py-1 z-50">
+                            <a href="{{ route('dashboard') }}" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Dashboard</a>
+                            <a href="{{ route('profile.edit') }}" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Profile</a>
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
-                                <button type="submit"
-                                    class="py-4 px-4 text-gray-300 hover:text-blue-600 transition-colors duration-300">Logout</button>
+                                <a href="{{ route('logout') }}"
+                                   onclick="event.preventDefault(); this.closest('form').submit();"
+                                   class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">
+                                    Log Out
+                                </a>
                             </form>
-                        @else
-                            <a href="{{ route('login') }}"
-                                class="py-4 px-4 text-gray-300 hover:text-blue-600 transition-colors duration-300">Login</a>
-                            @if (Route::has('register'))
-                                <a href="{{ route('register') }}"
-                                    class="py-4 px-4 text-gray-300 hover:text-blue-600 transition-colors duration-300">Register</a>
-                            @endif
-                        @endauth
+                        </div>
                     </div>
-                </div>
-            </nav>
+                @else
+                    <a href="{{ route('login') }}" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-300">Login</a>
+                    @if (Route::has('register'))
+                        <a href="{{ route('register') }}" class="ml-4 bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-300">Register</a>
+                    @endif
+                @endauth
+            </div>
+
+            {{-- Mobile Menu Button --}}
+            <div class="md:hidden flex items-center">
+                <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-gray-600 dark:text-gray-300 focus:outline-none">
+                    <svg class="h-6 w-6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                        <path d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+
+        {{-- Mobile Menu --}}
+        <div x-show="mobileMenuOpen" @click.away="mobileMenuOpen = false" class="md:hidden py-2">
+            <a href="{{ route('landing-page') }}#home" class="block px-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">Home</a>
+            <a href="{{ route('landing-page') }}#about" class="block px-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">Tentang</a>
+            <a href="{{ route('landing-page') }}#ticket" class="block px-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">Tiket</a>
+            <a href="{{ route('landing-page') }}#gallery" class="block px-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">Galeri</a>
+            <a href="{{ route('landing-page') }}#contact" class="block px-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">Kontak</a>
+            @auth
+                <a href="{{ route('booking.form') }}" class="block px-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">Book Now</a>
+                <a href="{{ route('my.bookings') }}" class="block px-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">My Bookings</a>
+                <a href="{{ route('dashboard') }}" class="block px-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">Dashboard</a>
+                <a href="{{ route('profile.edit') }}" class="block px-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">Profile</a>
+                <form method="POST" action="{{ route('logout') }}" class="w-full">
+                    @csrf
+                    <button type="submit" class="block w-full text-left px-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">
+                        Log Out
+                    </button>
+                </form>
+            @else
+                <a href="{{ route('login') }}" class="block px-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">Login</a>
+                @if (Route::has('register'))
+                    <a href="{{ route('register') }}" class="block px-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">Register</a>
+                @endif
+            @endauth
         </div>
     </div>
-</div>
+</header>
+
+<script>
+    // Navbar scroll effect
+    let lastScrollTop = 0;
+    const navbar = document.getElementById('navbar');
+    window.addEventListener("scroll", function() {
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        if (scrollTop > lastScrollTop) {
+            navbar.style.top = "-80px"; // Adjust based on navbar height
+        } else {
+            navbar.style.top = "0";
+        }
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
+
+        // Add/remove shadow on scroll
+        if (scrollTop > 50) {
+            navbar.classList.add('shadow-lg');
+        } else {
+            navbar.classList.remove('shadow-lg');
+        }
+    });
+
+    // Alpine.js data for dropdown and mobile menu
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('headerData', () => ({
+            open: false,
+            mobileMenuOpen: false
+        }))
+    });
+</script>

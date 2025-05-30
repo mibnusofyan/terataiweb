@@ -51,6 +51,8 @@ class BookingResource extends Resource
                 Forms\Components\FileUpload::make('payment_proof')
                     ->label('Bukti Transfer')
                     ->directory('payment-proofs')
+                    ->disk('public')
+                    ->visibility('public')
                     ->nullable(),
                 TextInput::make('total_price')
                     ->label('Total Harga')

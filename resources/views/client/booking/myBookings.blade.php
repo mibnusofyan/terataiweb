@@ -1,13 +1,13 @@
-<x-app-layout>
+@extends('layouts.main')
 
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Riwayat Pesanan Saya') }}
-        </h2>
-    </x-slot>
+@section('title', 'Riwayat Pesanan Saya - Menara Teratai')
 
+@section('content')
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight mb-6">
+                {{ __('Riwayat Pesanan Saya') }}
+            </h2>
             <div class="p-6">
                 @if (session('success'))
                     <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4"
@@ -33,16 +33,14 @@
                             <div class="text-left sm:text-right">
                                 <span
                                     class="px-3 py-1 text-sm font-semibold rounded-full
-                                                    @if ($booking->status === 'pending') bg-yellow-200 text-yellow-800 dark:bg-yellow-700 dark:text-yellow-200
-                                                    @elseif ($booking->status === 'paid') bg-green-200 text-green-800 dark:bg-green-700 dark:text-green-200
-                                                    @elseif ($booking->status === 'cancelled') bg-red-200 text-red-800 dark:bg-red-700 dark:text-red-200
-                                                    @elseif ($booking->status === 'completed') bg-blue-200 text-blue-800 dark:bg-blue-700 dark:text-blue-200
-                                                    @else bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200 @endif">
-                                    {{ ucfirst($booking->status) }}
+                                    @if ($booking->status === 'pending' || $booking->status === 'awaiting_confirmation') bg-yellow-200 text-yellow-800 dark:bg-yellow-700 dark:text-yellow-200
+                                    @elseif ($booking->status === 'confirmed' || $booking->status === 'completed') bg-green-200 text-green-800 dark:bg-green-700 dark:text-green-200
+                                    @elseif ($booking->status === 'cancelled' || $booking->status === 'failed') bg-red-200 text-red-800 dark:bg-red-700 dark:text-red-200
+                                    @else bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200 @endif">
+                                    {{ ucfirst(str_replace('_', ' ', $booking->status)) }}
                                 </span>
                                 <p class="text-lg font-bold mt-2 text-gray-900 dark:text-gray-100">Total: Rp
-                                    {{ number_format($booking->total_price, 0, ',', '.') }}
-                                </p>
+                                    {{ number_format($booking->total_price, 0, ',', '.') }}</p>
                             </div>
                         </div>
 
@@ -51,28 +49,24 @@
                             </h3>
                             <ul class="list-disc list-inside text-gray-700 dark:text-gray-300">
                                 @forelse ($booking->bookingItems as $item)
-                                    <li>
-                                        {{ $item->quantity }}x {{ $item->ticketType->name }}
-                                        (@ Rp {{ number_format($item->price_per_item, 0, ',', '.') }})
-                                        - Subtotal: Rp
-                                        {{ number_format($item->quantity * $item->price_per_item, 0, ',', '.') }}
-                                    </li>
+                                    <li>{{ $item->quantity }}x {{ $item->ticketType->name }} (Rp
+                                        {{ number_format($item->price_per_item, 0, ',', '.') }}/tiket) - Subtotal: Rp
+                                        {{ number_format($item->quantity * $item->price_per_item, 0, ',', '.') }}</li>
                                 @empty
                                     <li>Tidak ada detail item untuk pesanan ini.</li>
                                 @endforelse
                             </ul>
                         </div>
 
-                        @if ($booking->status === 'pending' && $booking->snap_token)
-                            <div class="text-right">
-                                <button 
-                                    class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded text-sm transition duration-300 pay-with-midtrans"
-                                    data-snap-token="{{ $booking->snap_token }}">
-                                    Bayar Online dengan Midtrans
-                                </button>
+                        @if ($booking->status === 'pending')
+                            <div class="text-right mt-4">
+                                <a href="{{ route('payment.upload.form', $booking->id) }}"
+                                    class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-3 rounded focus:outline-none focus:shadow-outline transition duration-300 text-sm">
+                                    Unggah Bukti Pembayaran
+                                </a>
                             </div>
                         @endif
-
+                        {{-- Add other actions based on status if needed, e.g., view ticket if confirmed --}}
                     </div>
                 @empty
                     <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 text-center">
@@ -87,19 +81,4 @@
             </div>
         </div>
     </div>
-    @php
-        $hasPendingWithSnapToken = $bookings->where('status', 'pending')->whereNotNull('snap_token')->count() > 0;
-    @endphp
-    @if($hasPendingWithSnapToken)
-        <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ config('midtrans.client_key') }}"></script>
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                document.querySelectorAll('.pay-with-midtrans').forEach(function(btn) {
-                    btn.addEventListener('click', function() {
-                        window.snap.pay(btn.getAttribute('data-snap-token'));
-                    });
-                });
-            });
-        </script>
-    @endif
-</x-app-layout>
+@endsection

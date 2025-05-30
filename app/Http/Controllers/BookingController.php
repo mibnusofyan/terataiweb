@@ -11,8 +11,6 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
-use Midtrans\Config;
-use Midtrans\Snap;
 
 class BookingController extends Controller
 {
@@ -38,7 +36,7 @@ class BookingController extends Controller
         $validator->after(function ($validator) use ($request) {
             $totalQuantity = collect($request->input('quantities'))->sum();
             if ($totalQuantity <= 0) {
-                $validator->errors()->add('quantities', 'Minimal harus ada 1 tiket yang dipesan.');
+                $validator->errors()->add('quantities', 'Anda harus memilih setidaknya satu tiket.');
             }
         });
 
@@ -60,42 +58,36 @@ class BookingController extends Controller
 
         $totalPrice = 0;
         $bookingItemsData = [];
+        $booking = null; // Initialize booking variable
 
         foreach ($selectedQuantities as $ticketTypeId => $quantity) {
             $ticketType = $ticketTypes->get($ticketTypeId);
 
-            // Cek apakah jenis tiket valid dan ada
             if (!$ticketType) {
-                $validator->errors()->add("quantities.{$ticketTypeId}", 'Jenis tiket tidak valid.');
-                throw new ValidationException($validator);
+                // This case should ideally be handled by validation or frontend
+                // For robustness, you might want to add an error or skip
+                continue;
             }
 
             $itemPrice = $ticketType->price;
             $subtotal = $itemPrice * $quantity;
             $totalPrice += $subtotal;
 
-            // Simpan data untuk booking item
             $bookingItemsData[] = [
-                'ticket_type_id' => $ticketType->id,
+                'ticket_type_id' => $ticketTypeId,
                 'quantity' => $quantity,
-                'price_per_item' => $itemPrice,
-                'created_at' => now(),
-                'updated_at' => now(),
+                'price_per_item' => $itemPrice, // Corrected: Changed 'price_per_ticket' to 'price_per_item'
+                                         // Removed 'subtotal' as it's likely not a direct column
             ];
         }
 
-        if ($validator->fails()) {
-            throw new ValidationException($validator);
-        }
 
-
-        DB::transaction(function () use ($user, $validatedData, $totalPrice, $bookingItemsData, $ticketTypes, $selectedQuantities, &$booking) {
+        DB::transaction(function () use ($user, $validatedData, $totalPrice, $bookingItemsData, &$booking) {
             $booking = Booking::create([
                 'user_id' => $user->id,
                 'booking_date' => $validatedData['booking_date'],
                 'total_price' => $totalPrice,
-                'status' => 'pending',
-                'payment_proof' => null,
+                'status' => 'pending', // Default status for manual payment
             ]);
 
             foreach ($bookingItemsData as $itemData) {
@@ -103,81 +95,67 @@ class BookingController extends Controller
             }
         });
 
-        // Konfigurasi Midtrans
-        Config::$serverKey = config('midtrans.server_key');
-        Config::$isProduction = config('midtrans.is_production');
-        Config::$isSanitized = true;
-        Config::$is3ds = true;
 
-        // Data transaksi untuk Snap
-        $params = [
-            'transaction_details' => [
-                'order_id' => $booking->id . '-' . time(),
-                'gross_amount' => $booking->total_price,
-            ],
-            'customer_details' => [
-                'first_name' => $user->name,
-                'email' => $user->email,
-            ],
-        ];
-
-        // Generate Snap Token
-        $snapToken = Snap::getSnapToken($params);
-
-        // Simpan snap_token ke booking (opsional, jika ingin)
-        $booking->update(['snap_token' => $snapToken]);
-
+        // Redirect to confirmation page with a message to upload payment proof
         return redirect()->route('booking.confirmation')->with([
-            'success' => 'Pesanan Anda berhasil dibuat! Silakan lakukan pembayaran.',
-            'snap_token' => $snapToken,
+            'success' => 'Pesanan berhasil dibuat. Silakan unggah bukti pembayaran Anda.',
+            'booking_id' => $booking->id, // Pass booking_id to confirmation page
         ]);
     }
 
     public function showConfirmation(Request $request)
     {
-        $latestBooking = Auth::user()->bookings()->latest()->first();
+        $bookingId = session('booking_id');
+        $latestBooking = null;
 
+        if ($bookingId) {
+            $latestBooking = Auth::user()->bookings()->with('bookingItems.ticketType')->find($bookingId);
+        }
+
+        if (!$latestBooking) {
+            // Fallback or if the user directly accesses this page without a recent booking in session
+            // You might want to redirect them or show a generic message
+            return redirect()->route('my.bookings')->with('info', 'Tidak ada detail konfirmasi pesanan yang ditemukan. Lihat riwayat pesanan Anda.');
+        }
 
         return view('client.booking.confirmation', compact('latestBooking'));
     }
 
     public function myBookings()
     {
-        // Ambil user yang sedang login
         $user = Auth::user();
-
-        $bookings = $user->bookings()
-            ->with(['bookingItems', 'bookingItems.ticketType'])
-            ->latest()
-            ->get();
-
+        // Eager load booking items and their ticket types
+        $bookings = $user->bookings()->with('bookingItems.ticketType')->orderBy('created_at', 'desc')->get();
         return view('client.booking.myBookings', compact('bookings'));
     }
 
     public function showUploadForm(Booking $booking)
     {
+        // Ensure the user owns the booking and the status is 'pending'
         if ($booking->user_id !== Auth::id() || $booking->status !== 'pending') {
-            return redirect()->route('my.bookings')->with('error', 'Pesanan tidak ditemukan atau tidak bisa diunggah bukti transfer.');
+            abort(403, 'Anda tidak diizinkan untuk mengunggah bukti pembayaran untuk pesanan ini atau status pesanan tidak memungkinkan.');
         }
-
         return view('client.booking.uploadPayment', compact('booking'));
     }
 
     public function uploadPaymentProof(Request $request, Booking $booking)
     {
+        // Ensure the user owns the booking and the status is 'pending'
         if ($booking->user_id !== Auth::id() || $booking->status !== 'pending') {
-            return redirect()->route('my.bookings')->with('error', 'Pesanan tidak ditemukan atau tidak bisa diunggah bukti transfer.');
+            abort(403, 'Tindakan tidak diizinkan.');
         }
 
         $request->validate([
-            'payment_proof' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg,pdf', 'max:2048'],
+            // Added pdf to allowed mimes
+            'payment_proof' => ['required', 'file', 'mimes:jpeg,png,jpg,gif,svg,pdf', 'max:2048'],
         ]);
 
         $filePath = $request->file('payment_proof')->store('payment-proofs', 'public');
 
         $booking->update([
-            'payment_proof' => $filePath,
-            'status' => 'awaiting_confirmation',
+            'payment_proof' => $filePath, // Corrected: Save the path to the 'payment_proof' column
+            'status' => 'awaiting_confirmation', // Update status
+            // snap_token related updates are removed
         ]);
 
         return redirect()->route('my.bookings')->with('success', 'Bukti transfer berhasil diunggah. Pesanan Anda akan segera diproses setelah diverifikasi admin.');

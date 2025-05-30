@@ -17,15 +17,11 @@ Route::get('/auth/google/callback', [GoogleAuthController::class, 'callback'])->
 
 
 Route::get('/booking/confirm', [BookingController::class, 'showConfirmation'])->name('booking.confirmation');
-Route::post('/midtrans/notification', [MidtransNotificationController::class, 'handleNotification']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-
-Route::post('/midtrans/callback', [MidtransCallbackController::class, 'handle'])
-    ->withoutMiddleware([VerifyCsrfToken::class]);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
