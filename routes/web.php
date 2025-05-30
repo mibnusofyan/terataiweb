@@ -6,15 +6,23 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\MidtransCallbackController;
 use App\Http\Controllers\MidtransNotificationController;
+use App\Http\Controllers\ReviewController;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LandingPageController::class, 'index'])->name('landing-page');
 
+// Contact Us
+Route::get('/contact', function () {
+    return view('client.contactUs');
+})->name('contact');
+
+Route::get('/reviews', [ReviewController::class, 'index'])->name('reviews.index');
+Route::post('/reviews', [ReviewController::class, 'store'])->name('reviews.store');
+
 // Auth Google
 Route::get('/auth/google/redirect', [GoogleAuthController::class, 'redirect'])->name('auth.google.redirect');
 Route::get('/auth/google/callback', [GoogleAuthController::class, 'callback'])->name('auth.google.callback');
-
 
 Route::get('/booking/confirm', [BookingController::class, 'showConfirmation'])->name('booking.confirmation');
 

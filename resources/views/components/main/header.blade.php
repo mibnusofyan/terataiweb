@@ -3,7 +3,7 @@
         <nav x-data="{ mobileMenuOpen: false }" class="flex items-center justify-between h-16">
             <div class="flex items-center">
                 <a href="{{ route('landing-page') }}" class="flex items-center space-x-2 text-2xl font-bold text-gray-800 dark:text-white">
-                    <img src="{{ asset('images/logo-teratai-putih.png') }}" alt="Menara Teratai Logo" class="h-10">
+                    <img src="{{ asset('images/logo/logo-menara.png') }}" alt="Menara Teratai Logo" class="h-10">
                     <span>Menara Teratai</span>
                 </a>
             </div>
