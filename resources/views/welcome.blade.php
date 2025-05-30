@@ -34,6 +34,10 @@
             <div class="col-span-full text-center animate__animated animate__fadeIn" data-wow-delay="0.1s">
                 <h1 class="text-6xl md:text-7xl text-gray-400 text-center mb-0 font-['Emblema_One']">Menara Pandang Teratai
                 </h1>
+                <button
+                    class="mt-6 px-8 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition duration-300">
+                    <a href="{{ route('booking.form') }}">Beli Tiket</a>
+                </button>
             </div>
         </div>
     </div>
@@ -270,146 +274,18 @@
         </div>
     </div>
 
+    <x-main.ourTeam />
 
-    <div class="container mx-auto px-4 py-24 bg-gray-900">
-        {{-- Bagian Judul dan Subjudul --}}
-        <div class="mb-8 text-center max-w-xl mx-auto animate__animated animate__fadeIn" data-wow-delay="0.1s">
-            <h5 class="text-blue-600 text-lg font-semibold mb-2">Tim Kami</h5>
-            <h1 class="text-4xl text-gray-200 md:text-5xl font-bold mb-0">Kenalan Dengan Tim Pengembang Aplikasi</h1>
-        </div>
-
-        {{-- Bagian Grid Anggota Tim --}}
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
-
-            {{-- Item Anggota Tim 1 --}}
-            <div class="col-span-1 animate__animated animate__fadeIn" data-wow-delay="0.1s">
-                <div class="relative">
-                    {{-- TAMBAH: h-72 (contoh tinggi) pada div gambar --}}
-                    <div class="relative overflow-hidden rounded-lg h-72">
-                        {{-- TAMBAH: h-full pada tag img --}}
-                        <img class="w-full h-full object-cover" src="{{ asset('images/tim/ibnu.png') }}"
-                            alt="Team Member: Muhammad Ibnu Sofyan"> {{-- Tambah alt text deskriptif --}}
-                        {{-- Overlay dengan Icon Sosial Media --}}
-                        <div
-                            class="absolute inset-0 flex items-center justify-center p-4 bg-gray-900 bg-opacity-75 opacity-0 hover:opacity-100 transition-opacity duration-300">
-                            <a class="w-9 h-9 flex items-center justify-center bg-white text-gray-800 hover:text-blue-600 rounded-full mx-1"
-                                href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                            <a class="w-9 h-9 flex items-center justify-center bg-white text-gray-800 hover:text-blue-600 rounded-full mx-1"
-                                href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                            <a class="w-9 h-9 flex items-center justify-center bg-white text-gray-800 hover:text-blue-600 rounded-full mx-1"
-                                href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
-                    {{-- Informasi Nama dan Jabatan --}}
-                    <div
-                        class="absolute bottom-0 start-0 w-full h-24 flex flex-col items-center justify-center rounded-b-lg text-center bg-gray-900 bg-opacity-90">
-                        <h5 class="text-white text-lg font-semibold mb-1">Muhammad Ibnu Sofyan</h5>
-                        <p class="text-xs uppercase text-gray-400 tracking-wider">Frontend Developer</p>
-                    </div>
-                </div>
-            </div>
-
-            {{-- Item Anggota Tim 2 --}}
-            <div class="col-span-1 animate__animated animate__fadeIn" data-wow-delay="0.3s">
-                <div class="relative">
-                    {{-- TAMBAH: h-72 (contoh tinggi) pada div gambar --}}
-                    <div class="relative overflow-hidden rounded-lg h-72">
-                        {{-- TAMBAH: h-full pada tag img --}}
-                        <img class="w-full h-full object-cover" src="{{ asset('images/tim/jaizz.jpeg') }}"
-                            alt="Team Member: Jaiz Cahya Prasetya">
-                        <div
-                            class="absolute inset-0 flex items-center justify-center p-4 bg-gray-900 bg-opacity-75 opacity-0 hover:opacity-100 transition-opacity duration-300">
-                            <a class="w-9 h-9 flex items-center justify-center bg-white text-gray-800 hover:text-blue-600 rounded-full mx-1"
-                                href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                            <a class="w-9 h-9 flex items-center justify-center bg-white text-gray-800 hover:text-blue-600 rounded-full mx-1"
-                                href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                            <a class="w-9 h-9 flex items-center justify-center bg-white text-gray-800 hover:text-blue-600 rounded-full mx-1"
-                                href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
-                    <div
-                        class="absolute bottom-0 start-0 w-full h-24 flex flex-col items-center justify-center rounded-b-lg text-center bg-gray-900 bg-opacity-90">
-                        <h5 class="text-white text-lg font-semibold mb-1">Jaiz Cahya Prasetya</h5>
-                        <p class="text-xs uppercase text-gray-400 tracking-wider">Backend Developer</p>
-                    </div>
-                </div>
-            </div>
-
-            {{-- Item Anggota Tim 3 --}}
-            <div class="col-span-1 animate__animated animate__fadeIn" data-wow-delay="0.5s">
-                <div class="relative">
-                    {{-- TAMBAH: h-72 (contoh tinggi) pada div gambar --}}
-                    <div class="relative overflow-hidden rounded-lg h-72">
-                        {{-- TAMBAH: h-full pada tag img --}}
-                        <img class="w-full h-full object-cover" src="{{ asset('images/tim/farrel.jpg') }}"
-                            alt="Team Member: Meiwildan Muhammad Farrel">
-                        <div
-                            class="absolute inset-0 flex items-center justify-center p-4 bg-gray-900 bg-opacity-75 opacity-0 hover:opacity-100 transition-opacity duration-300">
-                            <a class="w-9 h-9 flex items-center justify-center bg-white text-gray-800 hover:text-blue-600 rounded-full mx-1"
-                                href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                            <a class="w-9 h-9 flex items-center justify-center bg-white text-gray-800 hover:text-blue-600 rounded-full mx-1"
-                                href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                            <a class="w-9 h-9 flex items-center justify-center bg-white text-gray-800 hover:text-blue-600 rounded-full mx-1"
-                                href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
-                    <div
-                        class="absolute bottom-0 start-0 w-full h-24 flex flex-col items-center justify-center rounded-b-lg text-center bg-gray-900 bg-opacity-90">
-                        <h5 class="text-white text-lg font-semibold mb-1">Meiwildan Muhammad Farrel</h5>
-                        <p class="text-xs uppercase text-gray-400 tracking-wider">Designer UI UX & Server</p>
-                    </div>
-                </div>
-            </div>
-
-            {{-- Item Anggota Tim 4 --}}
-            <div class="col-span-1 animate__animated animate__fadeIn" data-wow-delay="0.7s">
-                <div class="relative">
-                    {{-- TAMBAH: h-72 (contoh tinggi) pada div gambar --}}
-                    <div class="relative overflow-hidden rounded-lg h-72">
-                        {{-- TAMBAH: h-full pada tag img --}}
-                        <img class="w-full h-full object-cover" src="{{ asset('images/tim/dedy.jpeg') }}"
-                            alt="Team Member: Dedy Tigor Manurung">
-                        <div
-                            class="absolute inset-0 flex items-center justify-center p-4 bg-gray-900 bg-opacity-75 opacity-0 hover:opacity-100 transition-opacity duration-300">
-                            <a class="w-9 h-9 flex items-center justify-center bg-white text-gray-800 hover:text-blue-600 rounded-full mx-1"
-                                href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                            <a class="w-9 h-9 flex items-center justify-center bg-white text-gray-800 hover:text-blue-600 rounded-full mx-1"
-                                href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                            <a class="w-9 h-9 flex items-center justify-center bg-white text-gray-800 hover:text-blue-600 rounded-full mx-1"
-                                href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
-                    <div
-                        class="absolute bottom-0 start-0 w-full h-24 flex flex-col items-center justify-center rounded-b-lg text-center bg-gray-900 bg-opacity-90">
-                        <h5 class="text-white text-lg font-semibold mb-1">Dedy Tigor Manurung</h5>
-                        <p class="text-xs uppercase text-gray-400 tracking-wider">Database & Testing</p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    {{-- UBAH: py-12 menjadi py-8 md:py-10 --}}
-    {{-- UBAH: my-8 md:my-12 menjadi my-6 md:my-8 --}}
     <div class="container mx-auto px-4 py-8 md:py-10 my-6 md:my-8">
-        {{-- Bagian Judul dan Subjudul --}}
         <div class="mb-8 text-center max-w-xl mx-auto animate__animated animate__fadeIn" data-wow-delay="0.1s">
             <h5 class="text-blue-600 text-lg font-semibold mb-2">Artikel Terbaru</h5>
             <h1 class="text-4xl md:text-5xl font-bold mb-0">Artikel Terbaru Tentang Menara Teratai</h1>
         </div>
-
-        {{-- Bagian Grid Artikel --}}
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12"> {{-- Grid ini sudah oke untuk 3 artikel
-            --}}
-
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
             {{-- Item Artikel 1 --}}
             <div class="col-span-1 animate__animated animate__fadeIn" data-wow-delay="0.1s">
-                <div class="bg-gray-900 rounded-lg overflow-hidden shadow-lg"> {{-- Tambah shadow & overflow hidden di
-                    sini --}}
-                    {{-- TAMBAH: h-56 (contoh tinggi) pada div gambar --}}
-                    <div class="relative overflow-hidden rounded-t-lg h-56"> {{-- Tambah rounded-t-lg dan tinggi tetap --}}
-                        {{-- TAMBAH: h-full pada tag img --}}
+                <div class="bg-gray-900 rounded-lg overflow-hidden shadow-lg">
+                    <div class="relative overflow-hidden rounded-t-lg h-56">
                         <img class="absolute w-full h-full object-cover" src="{{ asset('images/artikel/capster.png') }}"
                             alt="Artikel Image">
                     </div>
@@ -429,9 +305,7 @@
             {{-- Item Artikel 2 --}}
             <div class="col-span-1 animate__animated animate__fadeIn" data-wow-delay="0.3s">
                 <div class="bg-gray-900 rounded-lg overflow-hidden shadow-lg">
-                    {{-- TAMBAH: h-56 (contoh tinggi) pada div gambar --}}
                     <div class="relative overflow-hidden rounded-t-lg h-56">
-                        {{-- TAMBAH: h-full pada tag img --}}
                         <img class="absolute w-full h-full object-cover" src="{{ asset('images/artikel/eternallove.png') }}"
                             alt="Artikel Image">
                     </div>
@@ -451,9 +325,7 @@
             {{-- Item Artikel 3 --}}
             <div class="col-span-1 animate__animated animate__fadeIn" data-wow-delay="0.5s">
                 <div class="bg-gray-900 rounded-lg overflow-hidden shadow-lg">
-                    {{-- TAMBAH: h-56 (contoh tinggi) pada div gambar --}}
                     <div class="relative overflow-hidden rounded-t-lg h-56">
-                        {{-- TAMBAH: h-full pada tag img --}}
                         <img class="absolute w-full h-full object-cover" src="{{ asset('images/artikel/kapalapi.png') }}"
                             alt="Artikel Image">
                     </div>
@@ -469,12 +341,10 @@
                     </div>
                 </div>
             </div>
-            {{-- Jika ada lebih dari 3 artikel, grid akan otomatis menyesuaikan (1, 2, atau 3 kolom) --}}
-
         </div>
     </div>
 
-    <x-main.testimonial />
+    <x-main.testimonial :reviews="$reviews" />
 
     <div class="w-full relative overflow-hidden">
         <a href="#" class="absolute inset-0 flex items-center justify-center bg-white rounded-full z-10"

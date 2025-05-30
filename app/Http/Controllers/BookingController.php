@@ -58,14 +58,12 @@ class BookingController extends Controller
 
         $totalPrice = 0;
         $bookingItemsData = [];
-        $booking = null; // Initialize booking variable
+        $booking = null;
 
         foreach ($selectedQuantities as $ticketTypeId => $quantity) {
             $ticketType = $ticketTypes->get($ticketTypeId);
 
             if (!$ticketType) {
-                // This case should ideally be handled by validation or frontend
-                // For robustness, you might want to add an error or skip
                 continue;
             }
 
@@ -76,8 +74,8 @@ class BookingController extends Controller
             $bookingItemsData[] = [
                 'ticket_type_id' => $ticketTypeId,
                 'quantity' => $quantity,
-                'price_per_item' => $itemPrice, // Corrected: Changed 'price_per_ticket' to 'price_per_item'
-                                         // Removed 'subtotal' as it's likely not a direct column
+                'price_per_item' => $itemPrice,
+                'sub_total' => $subtotal,
             ];
         }
 
@@ -87,7 +85,7 @@ class BookingController extends Controller
                 'user_id' => $user->id,
                 'booking_date' => $validatedData['booking_date'],
                 'total_price' => $totalPrice,
-                'status' => 'pending', // Default status for manual payment
+                'status' => 'pending',
             ]);
 
             foreach ($bookingItemsData as $itemData) {
@@ -95,11 +93,10 @@ class BookingController extends Controller
             }
         });
 
-
         // Redirect to confirmation page with a message to upload payment proof
         return redirect()->route('booking.confirmation')->with([
             'success' => 'Pesanan berhasil dibuat. Silakan unggah bukti pembayaran Anda.',
-            'booking_id' => $booking->id, // Pass booking_id to confirmation page
+            'booking_id' => $booking->id,
         ]);
     }
 
@@ -113,8 +110,6 @@ class BookingController extends Controller
         }
 
         if (!$latestBooking) {
-            // Fallback or if the user directly accesses this page without a recent booking in session
-            // You might want to redirect them or show a generic message
             return redirect()->route('my.bookings')->with('info', 'Tidak ada detail konfirmasi pesanan yang ditemukan. Lihat riwayat pesanan Anda.');
         }
 
@@ -153,9 +148,8 @@ class BookingController extends Controller
         $filePath = $request->file('payment_proof')->store('payment-proofs', 'public');
 
         $booking->update([
-            'payment_proof' => $filePath, // Corrected: Save the path to the 'payment_proof' column
-            'status' => 'awaiting_confirmation', // Update status
-            // snap_token related updates are removed
+            'payment_proof' => $filePath,
+            'status' => 'awaiting_confirmation',
         ]);
 
         return redirect()->route('my.bookings')->with('success', 'Bukti transfer berhasil diunggah. Pesanan Anda akan segera diproses setelah diverifikasi admin.');

@@ -1,10 +1,13 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Models\Review;
+
 class LandingPageController extends Controller
 {
     public function index()
     {
-        return view('welcome');
+        $reviews = Review::latest()->get();
+        return view('welcome', compact('reviews'));
     }
 }

@@ -1,4 +1,4 @@
-@props(['reviews'])
+@props(['reviews' => collect()])
 
 {{-- Link CSS KeenSlider --}}
 <link href="https://cdn.jsdelivr.net/npm/keen-slider@6.8.6/keen-slider.min.css" rel="stylesheet" />
@@ -28,7 +28,6 @@
                                     <img alt="{{ $review->name }}" src="{{ asset('storage/' . $review->image_path) }}"
                                         class="size-14 rounded-full object-cover" />
                                 @else
-                                    {{-- Placeholder image or default avatar --}}
                                     <div class="size-14 rounded-full bg-gray-300 flex items-center justify-center">
                                         <span class="text-xl text-gray-600">{{ strtoupper(substr($review->name, 0, 1)) }}</span>
                                     </div>
@@ -42,7 +41,7 @@
                                             @if ($i < $review->rating)
                                                 <i class="fas fa-star"></i>
                                             @else
-                                                <i class="far fa-star"></i> {{-- Assuming you have Font Awesome for empty stars --}}
+                                                <i class="far fa-star"></i>
                                             @endif
                                         @endfor
                                     </div>

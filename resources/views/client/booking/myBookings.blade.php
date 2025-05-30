@@ -4,8 +4,8 @@
 
 @section('content')
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight mb-6">
+        <div class="max-w-5xl mx-auto sm:px-6 lg:px-8">
+            <h2 class="font-semibold text-xl text-gray-200 dark:text-gray-900 leading-tight mb-6">
                 {{ __('Riwayat Pesanan Saya') }}
             </h2>
             <div class="p-6">

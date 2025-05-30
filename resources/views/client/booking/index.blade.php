@@ -4,8 +4,8 @@
 
 @section('content')
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight mb-6">
+        <div class="max-w-5xl mx-auto sm:px-6 lg:px-8">
+            <h2 class="font-semibold text-xl text-gray-200 dark:text-gray-900 leading-tight mb-6">
                 Form Pemesanan Tiket Menara Teratai Purwokerto
             </h2>
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
@@ -54,13 +54,19 @@
                                             {{ number_format($ticketType->price, 0, ',', '.') }}
                                         </p>
                                     </div>
-                                    <div class="ml-4">
-                                        <label for="quantity_{{ $ticketType->id }}" class="sr-only">Jumlah
-                                            {{ $ticketType->name }}:</label>
+                                    <div class="ml-4 flex items-center space-x-2">
+                                        <button type="button" onclick="decrementQuantity({{ $ticketType->id }})"
+                                            class="bg-gray-300 dark:bg-gray-700 hover:bg-gray-400 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 font-bold py-1 px-3 rounded-lg focus:outline-none focus:shadow-outline">
+                                            -
+                                        </button>
                                         <input type="number" name="quantities[{{ $ticketType->id }}]"
                                             id="quantity_{{ $ticketType->id }}"
-                                            class="shadow appearance-none border rounded w-20 py-2 px-3 text-gray-700 dark:text-gray-300 dark:bg-gray-700 leading-tight focus:outline-none focus:shadow-outline text-center @error('quantities.' . $ticketType->id) border-red-500 @enderror"
-                                            value="{{ old('quantities.' . $ticketType->id, 0) }}" min="0">
+                                            class="shadow appearance-none w-16 py-1 px-3 rounded text-gray-700 dark:text-gray-300 dark:bg-gray-700 leading-tight focus:outline-none focus:shadow-outline text-center @error('quantities.' . $ticketType->id) border-red-500 @enderror"
+                                            value="{{ old('quantities.' . $ticketType->id, 0) }}" min="0" readonly>
+                                        <button type="button" onclick="incrementQuantity({{ $ticketType->id }})"
+                                            class="bg-gray-300 dark:bg-gray-700 hover:bg-gray-400 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 font-bold py-1 px-3 rounded-lg focus:outline-none focus:shadow-outline">
+                                            +
+                                        </button>
                                         @error('quantities.' . $ticketType->id)
                                             <p class="text-red-500 text-xs italic mt-1">{{ $message }}</p>
                                         @enderror
@@ -87,4 +93,20 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function incrementQuantity(ticketTypeId) {
+            const quantityInput = document.getElementById('quantity_' + ticketTypeId);
+            let currentValue = parseInt(quantityInput.value);
+            quantityInput.value = currentValue + 1;
+        }
+
+        function decrementQuantity(ticketTypeId) {
+            const quantityInput = document.getElementById('quantity_' + ticketTypeId);
+            let currentValue = parseInt(quantityInput.value);
+            if (currentValue > 0) {
+                quantityInput.value = currentValue - 1;
+            }
+        }
+    </script>
 @endsection

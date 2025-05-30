@@ -20,6 +20,10 @@ Route::get('/contact', function () {
 Route::get('/reviews', [ReviewController::class, 'index'])->name('reviews.index');
 Route::post('/reviews', [ReviewController::class, 'store'])->name('reviews.store');
 
+Route::get('/about', function () {
+    return view('client.aboutUs');
+})->name('about');
+
 // Auth Google
 Route::get('/auth/google/redirect', [GoogleAuthController::class, 'redirect'])->name('auth.google.redirect');
 Route::get('/auth/google/callback', [GoogleAuthController::class, 'callback'])->name('auth.google.callback');
