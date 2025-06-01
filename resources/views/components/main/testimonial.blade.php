@@ -11,6 +11,10 @@
             <h5 class="text-blue-600 text-lg font-semibold mb-2">Testimonial</h5>
             <h1 class="text-4xl text-gray-200 md:text-5xl font-bold mb-0">Baca ulasan tepercaya dari pelanggan kami
             </h1>
+            <button
+                class="mt-6 px-8 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition duration-300">
+                <a href="{{ route('reviews.index') }}">Beri Ulasan</a>
+            </button>
         </div>
 
         @if ($reviews && $reviews->count() > 0)

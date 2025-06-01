@@ -3,7 +3,12 @@
 @section('title', 'Riwayat Pesanan Saya - Menara Teratai')
 
 @section('content')
-    <div class="py-12">
+    <section class="bg-gradient-to-r from-gray-800 to-gray-900 py-8">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl font-bold text-white" style="font-family: 'Emblema One', cursive;">Tiketku</h1>
+        </div>
+    </section>
+    <div class="py-8">
         <div class="max-w-5xl mx-auto sm:px-6 lg:px-8">
             <div class="p-6">
                 @if (session('success'))
@@ -28,16 +33,16 @@
                                 </p>
                             </div>
                             <div class="text-left sm:text-right">
-                                <span
-                                    class="px-3 py-1 text-sm font-semibold rounded-full
-                                    @if ($booking->status === 'pending' || $booking->status === 'awaiting_confirmation') bg-yellow-200 text-yellow-800 dark:bg-yellow-700 dark:text-yellow-200
-                                    @elseif ($booking->status === 'confirmed' || $booking->status === 'completed') bg-green-200 text-green-800 dark:bg-green-700 dark:text-green-200
-                                    @elseif ($booking->status === 'cancelled' || $booking->status === 'failed') bg-red-200 text-red-800 dark:bg-red-700 dark:text-red-200
-                                    @else bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200 @endif">
+                                <span class="px-3 py-1 text-sm font-semibold rounded-full
+                                            @if ($booking->status === 'pending' || $booking->status === 'awaiting_confirmation') bg-yellow-200 text-yellow-800 dark:bg-yellow-700 dark:text-yellow-200
+                                            @elseif ($booking->status === 'confirmed' || $booking->status === 'completed') bg-green-200 text-green-800 dark:bg-green-700 dark:text-green-200
+                                            @elseif ($booking->status === 'cancelled' || $booking->status === 'failed') bg-red-200 text-red-800 dark:bg-red-700 dark:text-red-200
+                                            @else bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200 @endif">
                                     {{ ucfirst(str_replace('_', ' ', $booking->status)) }}
                                 </span>
                                 <p class="text-lg font-bold mt-2 text-gray-900 dark:text-gray-100">Total: Rp
-                                    {{ number_format($booking->total_price, 0, ',', '.') }}</p>
+                                    {{ number_format($booking->total_price, 0, ',', '.') }}
+                                </p>
                             </div>
                         </div>
 
@@ -48,7 +53,8 @@
                                 @forelse ($booking->bookingItems as $item)
                                     <li>{{ $item->quantity }}x {{ $item->ticketType->name }} (Rp
                                         {{ number_format($item->price_per_item, 0, ',', '.') }}/tiket) - Subtotal: Rp
-                                        {{ number_format($item->quantity * $item->price_per_item, 0, ',', '.') }}</li>
+                                        {{ number_format($item->quantity * $item->price_per_item, 0, ',', '.') }}
+                                    </li>
                                 @empty
                                     <li>Tidak ada detail item untuk pesanan ini.</li>
                                 @endforelse

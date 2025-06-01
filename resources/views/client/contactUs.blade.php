@@ -3,10 +3,9 @@
 @section('title', 'Kontak - Menara Teratai Purwokerto')
 
 @section('content')
-    <!-- Hero Section -->
     <section class="bg-gradient-to-r from-gray-800 to-gray-900 py-8">
         <div class="container mx-auto px-4 text-center">
-            <h1 class="text-6xl font-bold text-white mb-4" style="font-family: 'Emblema One', cursive;">Kontak</h1>
+            <h1 class="text-4xl font-bold text-white" style="font-family: 'Emblema One', cursive;">Kontak</h1>
         </div>
     </section>
 

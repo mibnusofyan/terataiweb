@@ -30,12 +30,11 @@
 @endpush
 
 @section('content')
-    <div class="bg-gradient-to-r from-gray-800 to-gray-900 py-20 text-center">
-        <div class="container mx-auto px-4">
-            <h1 class="text-5xl font-bold text-white tracking-tight" style="font-family: 'Emblema One', cursive;">Ulasan
-            </h1>
+    <section class="bg-gradient-to-r from-gray-800 to-gray-900 py-8">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl font-bold text-white" style="font-family: 'Emblema One', cursive;">Ulasan</h1>
         </div>
-    </div>
+    </section>
 
     <div class="bg-gray-100">
         <div class="container mx-auto">
