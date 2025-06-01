@@ -17,9 +17,6 @@ Route::get('/contact', function () {
     return view('client.contactUs');
 })->name('contact');
 
-Route::get('/reviews', [ReviewController::class, 'index'])->name('reviews.index');
-Route::post('/reviews', [ReviewController::class, 'store'])->name('reviews.store');
-
 Route::get('/about', function () {
     return view('client.aboutUs');
 })->name('about');
@@ -29,11 +26,6 @@ Route::get('/auth/google/redirect', [GoogleAuthController::class, 'redirect'])->
 Route::get('/auth/google/callback', [GoogleAuthController::class, 'callback'])->name('auth.google.callback');
 
 Route::get('/booking/confirm', [BookingController::class, 'showConfirmation'])->name('booking.confirmation');
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -45,6 +37,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/my-bookings', [BookingController::class, 'myBookings'])->name('my.bookings');
     Route::get('/my-bookings/{booking}/upload-payment-proof', [BookingController::class, 'showUploadForm'])->name('payment.upload.form');
     Route::post('/my-bookings/{booking}/upload-payment-proof', [BookingController::class, 'uploadPaymentProof'])->name('payment.upload.process');
+
+    Route::get('/reviews', [ReviewController::class, 'index'])->name('reviews.index');
+    Route::post('/reviews', [ReviewController::class, 'store'])->name('reviews.store');
 });
 
 require __DIR__ . '/auth.php';

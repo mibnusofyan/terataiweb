@@ -60,7 +60,7 @@ class GoogleAuthController extends Controller
             // Regenerate session
             request()->session()->regenerate();
 
-            return redirect()->intended('/dashboard');
+            return redirect()->intended(route('my.bookings', absolute: false));
 
         } catch (\Throwable $e) {
             Log::error('Google Auth Callback Error: ' . $e->getMessage(), ['trace' => $e->getTraceAsString()]);

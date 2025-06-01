@@ -10,9 +10,7 @@
 
         .star-rating label {
             font-size: 2rem;
-            /* Sesuaikan ukuran bintang */
             color: #ddd;
-            /* Warna bintang kosong */
             cursor: pointer;
             transition: color 0.2s;
         }
@@ -21,7 +19,6 @@
         .star-rating label:hover,
         .star-rating label:hover~label {
             color: #facc15;
-            /* Warna bintang terisi (kuning Tailwind) */
         }
 
         /* Untuk menampilkan bintang dari kanan ke kiri saat hover */

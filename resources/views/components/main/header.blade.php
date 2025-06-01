@@ -24,7 +24,8 @@
                 @auth
                     <a href="{{ route('my.bookings') }}"
                         class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition duration-300">Tiketku</a>
-
+                    <a href="{{ route('reviews.index') }}"
+                        class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition duration-300">Ulasan</a>
                     <div class="relative">
                         <button @click="open = !open"
                             class="flex items-center text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 focus:outline-none">
@@ -85,6 +86,8 @@
             @auth
                 <a href="{{ route('my.bookings') }}"
                     class="block px-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">Tiketku</a>
+                <a href="{{ route('reviews.index') }}"
+                    class="block px-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">Ulasan</a>
                 <a href="{{ route('profile.edit') }}"
                     class="block px-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">Profile</a>
                 <form method="POST" action="{{ route('logout') }}" class="w-full">

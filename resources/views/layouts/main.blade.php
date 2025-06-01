@@ -10,7 +10,7 @@
 
     <title>@yield('title', 'Menara Teratai Purwokerto')</title>
 
-    <link href="{{ asset('images/favicon.ico') }}" rel="icon">
+    <link href="{{ asset('images/logo/logo-menara.png') }}" rel="icon">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

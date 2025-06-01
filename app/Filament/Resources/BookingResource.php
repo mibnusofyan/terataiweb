@@ -128,7 +128,6 @@ class BookingResource extends Resource
                     ->hidden(fn($record) => $record->status !== 'pending')
                     ->action(function ($record) {
                         $record->update(['status' => 'paid']);
-                        // Kirim notifikasi ke user, dll.
                     }),
                 Tables\Actions\DeleteAction::make()
                     ->modalHeading('Hapus Booking')
