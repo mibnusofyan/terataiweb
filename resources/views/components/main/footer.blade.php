@@ -31,22 +31,19 @@
                 <a class="w-9 h-9 flex items-center justify-center bg-blue-600 text-white hover:bg-blue-700 rounded-full mr-2"
                     href="#"><i class="fab fa-linkedin-in"></i></a>
                 <a class="w-9 h-9 flex items-center justify-center bg-blue-600 text-white hover:bg-blue-700 rounded-full mr-0"
-                    href="#"><i class="fab fa-instagram"></i></a>
+                    target="_blank" href="https://www.instagram.com/menarateratai_purwokerto"><i
+                        class="fab fa-instagram"></i></a>
             </div>
         </div>
     </div>
 </div>
 
 <div class="w-full py-4 lg:py-0 px-4 md:px-8 bg-gray-900">
-    <div class="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-8">
-        <div class="col-span-1 lg:col-span-1 py-4 lg:py-6 text-center">
-            <p class="text-gray-400 mb-0">&copy; <a class="text-white font-bold hover:text-blue-600" href="#">Nama
-                    Situs Anda</a>. Semua Hak Dilindungi.
+    <div class="container mx-auto">
+        <div class="text-center">
+            <p class="text-gray-400 mb-0">&copy; <a class="text-white font-bold hover:text-blue-600" href="#">Menara
+                    Teratai</a>. Semua Hak Dilindungi.
             </p>
-        </div>
-        <div class="col-span-1 lg:col-span-1 py-4 lg:py-6 text-center">
-            <p class="text-gray-400 mb-0">Dirancang oleh <a class="text-white font-bold hover:text-blue-600"
-                    target="_blank" href="https://htmlcodex.com">HTML Codex</a></p>
         </div>
     </div>
 </div>
