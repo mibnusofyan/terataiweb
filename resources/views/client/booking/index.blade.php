@@ -54,6 +54,9 @@
                                     <p class="text-gray-600 dark:text-gray-400 text-sm">Rp
                                         {{ number_format($ticketType->price, 0, ',', '.') }}
                                     </p>
+                                    <p class="text-gray-600 dark:text-gray-400 text-sm">
+                                        {{ $ticketType->description }}
+                                    </p>
                                 </div>
                                 <div class="ml-4 flex items-center space-x-2">
                                     <button type="button" onclick="decrementQuantity({{ $ticketType->id }})"
