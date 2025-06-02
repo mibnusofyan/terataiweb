@@ -61,6 +61,12 @@
                             </ul>
                         </div>
 
+                        <div class="mb-4">
+                            <h3 class="text-lg font-semibold mb-2 text-gray-900 dark:text-gray-100">Metode Pembayaran:</h3>
+                            <p class="text-gray-700 dark:text-gray-300">Rek BCA: 87364738292</p>
+                            <p class="text-gray-700 dark:text-gray-300">Atas Nama: Menara Pandang Teratai</p>
+                        </div>
+
                         @if ($booking->status === 'pending')
                             <div class="text-right mt-4">
                                 <a href="{{ route('payment.upload.form', $booking->id) }}"

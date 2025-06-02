@@ -5,9 +5,6 @@
 @section('content')
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight mb-6">
-                {{ __('Pesanan Berhasil Dibuat!') }}
-            </h2>
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
 
@@ -52,12 +49,15 @@
                                         Pesanan:</h3>
                                     <ul class="list-disc list-inside mb-4">
                                         @forelse ($latestBooking->bookingItems as $item)
-                                            <li>{{ $item->quantity }}x {{ $item->ticketType->name }} - Rp
-                                                {{ number_format($item->subtotal, 0, ',', '.') }}</li>
+                                            <li>{{ $item->quantity }}x {{ $item->ticketType->name }}
                                         @empty
                                             <li>Tidak ada item dalam pesanan ini.</li>
                                         @endforelse
                                     </ul>
+                                    <h3 class="font-semibold mb-2 border-b border-gray-200 dark:border-gray-600 pb-1">Metode
+                                        Pembayaran:</h3>
+                                    <p class="mb-4"><span class="font-semibold">Rek BCA:</span> 87364738292 </p>
+                                    <p class="mb-4"><span class="font-semibold">Atas Nama:</span> Menara Pandang Teratai</p>
 
                                     {{-- Tombol Unggah Bukti Pembayaran --}}
                                     @if ($latestBooking->status === 'pending')
