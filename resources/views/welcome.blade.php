@@ -17,8 +17,8 @@
             <div class="col-span-1 lg:col-span-1 animate__animated animate__fadeIn" data-wow-delay="0.3s"
                 style="min-height: 500px;">
                 <div class="relative h-full">
-                    <img class="absolute w-full h-full object-cover rounded-lg" src="{{ asset('images/menara/menara7.jpg') }}"
-                        alt="Hero Image 1">
+                    <img class="absolute w-full h-full object-cover rounded-lg"
+                        src="{{ asset('images/menara/menara7.jpg') }}" alt="Hero Image 1">
                 </div>
             </div>
             <div class="col-span-1 lg:col-span-1 animate__animated animate__fadeIn" data-wow-delay="0.5s">
@@ -143,20 +143,6 @@
             <h1 class="text-4xl md:text-5xl font-bold mb-0">Jelajahi Keindahan Menara Teratai</h1>
         </div>
         <div class="text-center">
-            <ul class="inline-flex justify-center bg-gray-900 text-uppercase rounded-full mb-8 animate__animated animate__fadeIn"
-                data-wow-delay="0.2s">
-                <li>
-                    <a href="#tab-1" class="inline-block py-2 px-6 text-white bg-blue-600 rounded-full">Pemandangan</a>
-                </li>
-                <li>
-                    <a href="#tab-2"
-                        class="inline-block py-2 px-6 text-gray-300 hover:text-blue-600 rounded-full">Fasilitas</a>
-                </li>
-                <li>
-                    <a href="#tab-3"
-                        class="inline-block py-2 px-6 text-gray-300 hover:text-blue-600 rounded-full">Lainnya</a>
-                </li>
-            </ul>
             <div class="tab-content">
                 <div id="tab-1" class="p-0">
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0">

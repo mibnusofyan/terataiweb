@@ -24,12 +24,6 @@
         <div class="mb-4">
             <h3 class="text-white text-xl font-semibold mb-4">Sosial Media</h3>
             <div class="flex mt-4">
-                <a class="w-9 h-9 flex items-center justify-center bg-blue-600 text-white hover:bg-blue-700 rounded-full mr-2"
-                    href="#"><i class="fab fa-twitter"></i></a>
-                <a class="w-9 h-9 flex items-center justify-center bg-blue-600 text-white hover:bg-blue-700 rounded-full mr-2"
-                    href="#"><i class="fab fa-facebook-f"></i></a>
-                <a class="w-9 h-9 flex items-center justify-center bg-blue-600 text-white hover:bg-blue-700 rounded-full mr-2"
-                    href="#"><i class="fab fa-linkedin-in"></i></a>
                 <a class="w-9 h-9 flex items-center justify-center bg-blue-600 text-white hover:bg-blue-700 rounded-full mr-0"
                     target="_blank" href="https://www.instagram.com/menarateratai_purwokerto"><i
                         class="fab fa-instagram"></i></a>
