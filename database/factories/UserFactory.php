@@ -29,6 +29,9 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
+            'google_id' => null,
+            'avatar_url' => null,
+            'is_admin' => false,
         ];
     }
 
@@ -39,6 +42,28 @@ class UserFactory extends Factory
     {
         return $this->state(fn (array $attributes) => [
             'email_verified_at' => null,
+        ]);
+    }
+
+    /**
+     * Create a user with Google authentication data.
+     */
+    public function withGoogle(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'google_id' => fake()->unique()->numerify('##########'),
+            'avatar_url' => fake()->imageUrl(200, 200, 'people'),
+            'email_verified_at' => now(),
+        ]);
+    }
+
+    /**
+     * Create an admin user.
+     */
+    public function admin(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'is_admin' => true,
         ]);
     }
 }
