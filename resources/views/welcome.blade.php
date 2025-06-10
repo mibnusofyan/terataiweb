@@ -17,13 +17,10 @@
             <div class="col-span-1 lg:col-span-1 animate__animated animate__fadeIn" data-wow-delay="0.3s"
                 style="min-height: 500px;">
                 <div class="relative h-full">
-<<<<<<< HEAD
                     <img class="absolute w-full h-full object-cover rounded-lg" src="{{ asset('images/menara/menara7.jpg') }}"
                         alt="Hero Image 1">
-=======
                     <img class="absolute w-full h-full object-cover rounded-lg"
                         src="{{ asset('images/menara/menara7.jpg') }}" alt="Hero Image 1">
->>>>>>> df3e28fba7d5a1105ce241da2c41b060868c031c
                 </div>
             </div>
             <div class="col-span-1 lg:col-span-1 animate__animated animate__fadeIn" data-wow-delay="0.5s">
